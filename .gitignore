@@ -19,3 +19,10 @@
 *.exe
 *.out
 *.app
+
+bin/
+proj.android/bin
+proj.android/gen
+proj.android/obj
+proj.android/assets
+cocos2d/
