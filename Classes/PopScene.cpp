@@ -59,19 +59,22 @@ void PopScene::__initBirds()
 
 void PopScene::_birdTouchHandler(Bird *bird)
 {
-    if (m_vCloseList.size()!=0) {
-        auto it = m_vCloseList.begin();
-        while (it!=m_vCloseList.end()) {
-            (*it)->bomb();
+    if (m_vDashList.size()!=0) {
+        auto it = m_vDashList.begin();
+        while (it!=m_vDashList.end()) {
+            auto bird = *it;
+            bird->setIsDestroy(true);
+            bird->bomb();
             it++;
         }
-        m_vCloseList.clear();
+        m_vDashList.clear();
+        _updateBirdsPosition();
         return;
     }
     
     Vector<Bird*> selectBirdVec;
     selectBirdVec.pushBack(bird);
-    m_vCloseList.pushBack(bird);
+    m_vDashList.pushBack(bird);
     bird->setSelect(true);
     while (selectBirdVec.size()!=0)
     {
@@ -105,7 +108,7 @@ void PopScene::_birdTouchHandler(Bird *bird)
                         neighbor->setSelect(true);
                         selectBirdVec.pushBack(neighbor);
                     }
-                    m_vCloseList.pushBack(neighbor);
+                    m_vDashList.pushBack(neighbor);
                 }
             }
         }
@@ -113,7 +116,30 @@ void PopScene::_birdTouchHandler(Bird *bird)
     }
 }
 
-
+void PopScene::_updateBirdsPosition()
+{
+    for(auto col=0;col<COL;col++)
+    {
+        for (auto row=0; row<ROW; row++)
+        {
+            auto i=0;
+            auto idx = row*COL+col;
+            auto bird = birdVec.at(idx);
+            if (bird->getIsDestroy())
+            {
+                i++;
+            }
+            else if(i>0)
+            {
+                auto distance = i*BOX_HEIGHT;
+                auto duration = distance / 50;
+                auto moveBy = MoveBy::create(duration, Point(0,-distance));
+                bird->setRow(bird->getRow()-i);
+                bird->runAction(moveBy);
+            }
+        }
+    }
+}
 
 
 

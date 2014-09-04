@@ -25,6 +25,7 @@ Bird *Bird::create(int type)
         bird->autorelease();
         bird->setBirdType(type);
         bird->__initEventListener();
+        bird->setIsDestroy(false);
         return bird;
     }
     
