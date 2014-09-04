@@ -59,8 +59,19 @@ void PopScene::__initBirds()
 
 void PopScene::_birdTouchHandler(Bird *bird)
 {
+    if (m_vCloseList.size()!=0) {
+        auto it = m_vCloseList.begin();
+        while (it!=m_vCloseList.end()) {
+            (*it)->bomb();
+            it++;
+        }
+        m_vCloseList.clear();
+        return;
+    }
+    
     Vector<Bird*> selectBirdVec;
     selectBirdVec.pushBack(bird);
+    m_vCloseList.pushBack(bird);
     bird->setSelect(true);
     while (selectBirdVec.size()!=0)
     {

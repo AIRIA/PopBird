@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PopScene.cpp"
-            timestampString = "431513318.409928"
+            timestampString = "431515670.658661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "PopScene::_birdTouchHandler(Bird *bird)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PopScene.cpp"
-            timestampString = "431514182.717931"
+            timestampString = "431515670.658661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "PopScene::_birdTouchHandler(Bird *bird)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PopScene.cpp"
-            timestampString = "431514506.103142"
+            timestampString = "431515670.658661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "PopScene::_birdTouchHandler(Bird *bird)"
             landmarkType = "5">
          </BreakpointContent>

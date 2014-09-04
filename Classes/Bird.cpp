@@ -54,7 +54,6 @@ bool Bird::getSelect()
 
 void Bird::bomb()
 {
-    
     char feather[50];
     sprintf(feather, "box0%d_feather@2x.png",m_iBirdType);
     
