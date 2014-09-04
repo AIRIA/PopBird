@@ -22,6 +22,7 @@ bool HomeScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_menu/mainmenu_a_CN_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_menu/mainmenu_a_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_menu/mainmenu_b_CN_RETINA.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/Character_RETINA.plist");
     
     __initBackground();
     __addBottomMenu();
@@ -31,12 +32,14 @@ bool HomeScene::init()
 
 void HomeScene::__initBackground()
 {
-    auto createSpriteFun = [](std::string sprName,Point anchorPos,Point sprPos,Node *parent,bool isDemoBird=false)->Sprite*
+    auto createSpriteFun = [](std::string sprName,Point anchorPos,Point sprPos,Node *parent,bool isDemoBird=false,int type=0)->Sprite*
     {
         Sprite  *spr = nullptr;
         if (isDemoBird)
         {
-            spr = DemoBird::create(sprName);
+            auto bird = DemoBird::create(sprName);
+            bird->setBirdType(type);
+            spr = bird;
         }
         else
         {
@@ -69,13 +72,13 @@ void HomeScene::__initBackground()
     createSpriteFun("main_bg_a@2x.png",Point::ANCHOR_MIDDLE_BOTTOM,VisibleRect::bottom(),this);
     /* 添加彩色小鸟 */
     
-    createSpriteFun("main_cha_white@2x.png",Point::ANCHOR_MIDDLE,Point(165,550),this,true);
-    createSpriteFun("main_cha_blue@2x.png",Point::ANCHOR_MIDDLE,Point(130,420),this,true);
-    createSpriteFun("main_cha_orange@2x.png",Point::ANCHOR_MIDDLE,Point(70,300),this,true);
-    createSpriteFun("main_cha_pink@2x.png",Point::ANCHOR_MIDDLE,Point(210,450),this,true);
-    createSpriteFun("main_cha_red@2x.png",Point::ANCHOR_MIDDLE,Point(180,300),this,true);
-    createSpriteFun("main_cha_purple@2x.png",Point::ANCHOR_MIDDLE,Point(100,200),this,true);
-    createSpriteFun("main_cha_yellow@2x.png",Point::ANCHOR_MIDDLE,Point(560,100),this,true);
+    createSpriteFun("main_cha_white@2x.png",Point::ANCHOR_MIDDLE,Point(165,550),this,true,6);
+    createSpriteFun("main_cha_blue@2x.png",Point::ANCHOR_MIDDLE,Point(130,420),this,true,0);
+    createSpriteFun("main_cha_orange@2x.png",Point::ANCHOR_MIDDLE,Point(70,300),this,true,2);
+    createSpriteFun("main_cha_pink@2x.png",Point::ANCHOR_MIDDLE,Point(210,450),this,true,3);
+    createSpriteFun("main_cha_red@2x.png",Point::ANCHOR_MIDDLE,Point(180,300),this,true,5);
+    createSpriteFun("main_cha_purple@2x.png",Point::ANCHOR_MIDDLE,Point(100,200),this,true,4);
+    createSpriteFun("main_cha_yellow@2x.png",Point::ANCHOR_MIDDLE,Point(560,100),this,true,7);
 }
 
 void HomeScene::__addBottomMenu()

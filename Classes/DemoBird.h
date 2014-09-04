@@ -16,7 +16,9 @@ class DemoBird:public Bird
 public:
     virtual void onEnter();
     static DemoBird *create(std::string fileName);
-    void bomb();
+    void shake();
+private:
+    int m_iShakeTimes = 0;
 };
 
 #endif /* defined(__PopBird__DemoBird__) */

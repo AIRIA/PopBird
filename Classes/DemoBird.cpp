@@ -14,6 +14,7 @@ DemoBird *DemoBird::create(std::string fileName)
     if(bird&&bird->initWithSpriteFrameName(fileName))
     {
         bird->autorelease();
+        bird->__initEventListener();
         return bird;
     }
     
@@ -43,4 +44,35 @@ void DemoBird::onEnter()
     auto moveSeq = Sequence::create(moveBy,moveBack, nullptr);
     auto moveRepeat = RepeatForever::create(moveSeq);
     runAction(moveRepeat);
+    setTouchEndedHandler([](Bird *bird)->void{
+        auto demoBird = static_cast<DemoBird*>(bird);
+        demoBird->shake();
+        demoBird->getEventDispatcher()->removeEventListenersForTarget(demoBird);
+    });
 }
+
+void DemoBird::shake()
+{
+    this->m_iShakeTimes++;
+    if(m_iShakeTimes==10)
+    {
+        bomb();
+        return;
+    }
+    auto posX = rand()%3-3;
+    auto posY = rand()%3-3;
+    auto moveBy = MoveBy::create(rand()%1/20+0.05, Point(posX,posY));
+    auto moveBack = moveBy->reverse();
+    auto moveCallback = CCCallFunc::create(CC_CALLBACK_0(DemoBird::shake, this));
+    runAction(Sequence::create(moveBy,moveBack,moveCallback,nullptr));
+}
+
+
+
+
+
+
+
+
+
+

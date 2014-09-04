@@ -18,6 +18,12 @@ public:
     virtual bool init();
     CREATE_FUNC(PopScene);
     
+    
+protected:
+    Vector<Bird*> m_vOpenList;
+    Vector<Bird*> m_vCloseList;
+    void _birdTouchHandler(Bird *bird);
+    
 private:
     Vector<Bird*> birdVec;
     void __initBackground();

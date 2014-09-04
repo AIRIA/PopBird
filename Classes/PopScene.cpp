@@ -15,7 +15,6 @@ bool PopScene::init()
         return false;
     }
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/stage_CN_RETINA.plist");
-    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/Character_RETINA.plist");
     
     __initBackground();
     __initBirds();
@@ -47,9 +46,7 @@ void PopScene::__initBirds()
         bird->setAnchorPoint(Point::ZERO);
         bird->setRow(row);
         bird->setCol(col);
-        bird->setTouchBeganHandler([](Bird *bird)->void{
-            bird->setSelect(true);
-        });
+        bird->setTouchBeganHandler(std::bind(&PopScene::_birdTouchHandler,this,std::placeholders::_1));
         birdVec.pushBack(bird);
         birdWrapperNode->addChild(bird);
     }
@@ -59,3 +56,53 @@ void PopScene::__initBirds()
     auto moveAct = MoveTo::create(0.5f, Point::ZERO);
     birdWrapperNode->runAction(Sequence::create(DelayTime::create(0.4f),moveAct, NULL));
 }
+
+void PopScene::_birdTouchHandler(Bird *bird)
+{
+    Vector<Bird*> selectBirdVec;
+    selectBirdVec.pushBack(bird);
+    bird->setSelect(true);
+    while (selectBirdVec.size()!=0)
+    {
+        auto bird = selectBirdVec.at(0);
+        Bird *selectBird = bird;
+        auto row = bird->getRow();
+        auto col = bird->getCol();
+        
+        for(auto i=row-1;i<=row+1;i++)
+        {
+            if(i<0 || i>=ROW)
+            {
+                continue;
+            }
+            for (auto j=col-1; j<=col+1; j++)
+            {
+                if((i!=row && j!=col )||j<0||j>=COL)
+                {
+                    continue;
+                }
+                auto idx = i*COL+j;
+                auto neighbor = birdVec.at(idx);
+                if (neighbor!=selectBird && neighbor->getBirdType()==bird->getBirdType())
+                {
+                    if (neighbor->getSelect())
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        neighbor->setSelect(true);
+                        selectBirdVec.pushBack(neighbor);
+                    }
+                    m_vCloseList.pushBack(neighbor);
+                }
+            }
+        }
+        selectBirdVec.eraseObject(selectBird);
+    }
+}
+
+
+
+
+
