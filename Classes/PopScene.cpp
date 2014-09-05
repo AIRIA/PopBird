@@ -118,25 +118,41 @@ void PopScene::_birdTouchHandler(Bird *bird)
 
 void PopScene::_updateBirdsPosition()
 {
+    auto j=0;
     for(auto col=0;col<COL;col++)
     {
-        for (auto row=0; row<ROW; row++)
+        auto i=0;
+        
+        for (auto row=0; row<ROW; )
         {
-            auto i=0;
             auto idx = row*COL+col;
+            row++;
             auto bird = birdVec.at(idx);
             if (bird->getIsDestroy())
             {
                 i++;
             }
-            else if(i>0)
+            else if(i>0 || j>0)
             {
                 auto distance = i*BOX_HEIGHT;
-                auto duration = distance / 50;
-                auto moveBy = MoveBy::create(duration, Point(0,-distance));
+                auto moveX = 0;
+                if (j>0 && col !=0)
+                {
+                    moveX = j*BOX_WIDTH;
+                }
+                auto moveBy = MoveBy::create(0.3f, Point(-moveX,-distance));
                 bird->setRow(bird->getRow()-i);
+                bird->setCol(bird->getCol()-j);
                 bird->runAction(moveBy);
+                
+                auto targetIdx = bird->getRow()*COL+bird->getCol();
+                auto targetBird = birdVec.at(targetIdx);
+                
+                birdVec.swap(targetBird, bird);
             }
+        }
+        if (i==ROW) {
+            j++;
         }
     }
 }
