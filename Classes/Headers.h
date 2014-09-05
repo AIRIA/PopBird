@@ -21,4 +21,6 @@ using namespace cocos2d;
 #define ROW 10
 #define COL 10
 
+#define EVENT_PAUSE_GAME "event_pause_game"
+
 #endif

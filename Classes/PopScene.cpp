@@ -7,6 +7,8 @@
 //
 
 #include "PopScene.h"
+#include "PauseSprite.h"
+#include "PauseLayer.h"
 
 bool PopScene::init()
 {
@@ -18,6 +20,8 @@ bool PopScene::init()
     
     __initBackground();
     __initBirds();
+    __initPauseButton();
+    addChild(PauseLayer::create());
     return true;
 }
 
@@ -57,8 +61,18 @@ void PopScene::__initBirds()
     birdWrapperNode->runAction(Sequence::create(DelayTime::create(0.4f),moveAct, NULL));
 }
 
-void PopScene::_birdTouchHandler(Bird *bird)
+void PopScene::__initPauseButton()
 {
+    auto pauseSpr = PauseSprite::create();
+    pauseSpr->setAnchorPoint(Point::ANCHOR_TOP_LEFT);
+    pauseSpr->setPosition(VisibleRect::leftTop()+Point(18,-18));
+    pauseSpr->setOpacity(0);
+    addChild(pauseSpr);
+}
+
+void PopScene::_birdTouchHandler(BaseSprite *sprite)
+{
+    auto bird = static_cast<Bird*>(sprite);
     if (m_vDashList.size()!=0) {
         auto it = m_vDashList.begin();
         while (it!=m_vDashList.end()) {
@@ -140,7 +154,7 @@ void PopScene::_updateBirdsPosition()
                 {
                     moveX = j*BOX_WIDTH;
                 }
-                auto moveBy = MoveBy::create(0.3f, Point(-moveX,-distance));
+                auto moveBy = MoveBy::create(0.25f, Point(-moveX,-distance));
                 bird->setRow(bird->getRow()-i);
                 bird->setCol(bird->getCol()-j);
                 bird->runAction(moveBy);

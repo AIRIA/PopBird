@@ -44,7 +44,7 @@ void DemoBird::onEnter()
     auto moveSeq = Sequence::create(moveBy,moveBack, nullptr);
     auto moveRepeat = RepeatForever::create(moveSeq);
     runAction(moveRepeat);
-    setTouchEndedHandler([](Bird *bird)->void{
+    setTouchEndedHandler([](BaseSprite *bird)->void{
         auto demoBird = static_cast<DemoBird*>(bird);
         demoBird->shake();
         demoBird->getEventDispatcher()->removeEventListenersForTarget(demoBird);

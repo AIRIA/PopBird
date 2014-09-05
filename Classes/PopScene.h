@@ -20,12 +20,14 @@ public:
     
 protected:
     Vector<Bird*> m_vDashList;
-    void _birdTouchHandler(Bird *bird);
+    void _birdTouchHandler(BaseSprite *bird);
     void _updateBirdsPosition();
+    
 private:
     Vector<Bird*> birdVec;
     void __initBackground();
     void __initBirds();
+    void __initPauseButton();
 };
 
 #endif /* defined(__PopBird__PopScene__) */

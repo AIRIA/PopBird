@@ -9,9 +9,9 @@
 #ifndef __PopBird__Bird__
 #define __PopBird__Bird__
 
-#include "Headers.h"
+#include "BaseSprite.h"
 
-class Bird:public Sprite
+class Bird:public BaseSprite
 {
 public:
     virtual void onEnter();
@@ -20,15 +20,6 @@ public:
     bool getSelect();
     void bomb();
     
-    void setTouchEndedHandler(std::function<void(Bird*)> handler);
-    void setTouchMovedHandler(std::function<void(Bird*)> handler);
-    void setTouchBeganHandler(std::function<void(Bird*)> handler);
-    
-protected:
-    std::function<void(Bird*)> touchEndedHandler;
-    std::function<void(Bird*)> touchMovedHandler;
-    std::function<void(Bird*)> touchBeganHandler;
-    void __initEventListener();
     
     CC_SYNTHESIZE(int, m_iBirdType, BirdType);
     CC_SYNTHESIZE(int, m_iRow, Row);
