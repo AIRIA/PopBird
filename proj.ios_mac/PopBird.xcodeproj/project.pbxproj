@@ -21,6 +21,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		4180102619BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
+		4180102719BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
+		4180102B19BEB0280081EFE8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4180102A19BEB0280081EFE8 /* fonts */; };
+		4180102C19BEB0280081EFE8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4180102A19BEB0280081EFE8 /* fonts */; };
 		418849F419B9A39700F90CDF /* PauseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 418849F219B9A39700F90CDF /* PauseLayer.cpp */; };
 		418849F519B9A39700F90CDF /* PauseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 418849F219B9A39700F90CDF /* PauseLayer.cpp */; };
 		418849FA19B9A3B100F90CDF /* ExitWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 418849F819B9A3B100F90CDF /* ExitWin.cpp */; };
@@ -243,6 +247,8 @@
 		1D6058910D05DD3D006BFB54 /* PopBird iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PopBird iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4180102519BE9D4C0081EFE8 /* exit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = exit; sourceTree = "<group>"; };
+		4180102A19BEB0280081EFE8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		418849F219B9A39700F90CDF /* PauseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PauseLayer.cpp; path = ../Classes/PauseLayer.cpp; sourceTree = "<group>"; };
 		418849F319B9A39700F90CDF /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = ../Classes/PauseLayer.h; sourceTree = "<group>"; };
 		418849F819B9A3B100F90CDF /* ExitWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExitWin.cpp; path = ../Classes/ExitWin.cpp; sourceTree = "<group>"; };
@@ -517,6 +523,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4180102A19BEB0280081EFE8 /* fonts */,
+				4180102519BE9D4C0081EFE8 /* exit */,
 				41884A0419B9B78900F90CDF /* pause */,
 				41E7A2D719B6BA82004EA538 /* game_asset */,
 				41E7A2CC19B5B0FC004EA538 /* main_menu */,
@@ -692,6 +700,7 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				4180102B19BEB0280081EFE8 /* fonts in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -707,6 +716,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				4180102619BE9D4C0081EFE8 /* exit in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -718,6 +728,8 @@
 				41E7A2CE19B5B0FC004EA538 /* main_menu in Resources */,
 				41E7A2D919B6BA82004EA538 /* game_asset in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				4180102C19BEB0280081EFE8 /* fonts in Resources */,
+				4180102719BE9D4C0081EFE8 /* exit in Resources */,
 				41884A0619B9B78900F90CDF /* pause in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

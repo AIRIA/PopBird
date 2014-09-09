@@ -16,9 +16,13 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/VisibleRect.cpp \
                    ../../Classes/BaseLayer.cpp \
                    ../../Classes/BaseScene.cpp \
+                   ../../Classes/BaseSprite.cpp \
                    ../../Classes/PopScene.cpp \
                    ../../Classes/Bird.cpp \
-                   ../../Classes/DemoBird.cpp 
+                   ../../Classes/DemoBird.cpp \
+                   ../../Classes/PauseLayer.cpp \
+                   ../../Classes/PauseSprite.cpp \
+                   ../../Classes/ExitWin.cpp 
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

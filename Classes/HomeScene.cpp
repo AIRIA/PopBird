@@ -9,6 +9,7 @@
 #include "HomeScene.h"
 #include "PopScene.h"
 #include "DemoBird.h"
+#include "ExitWin.h"
 
 bool HomeScene::init()
 {
@@ -23,12 +24,15 @@ bool HomeScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_menu/mainmenu_a_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("main_menu/mainmenu_b_CN_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/Character_RETINA.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/trophy_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_CN_RETINA.plist");
+    
     
     __initBackground();
     __addBottomMenu();
     __addColorBirds();
+    
     return true;
 }
 
@@ -119,6 +123,13 @@ void HomeScene::__addMainMenu()
     menu1->setCallback([](Ref *pSender)->void{
         PopScene::create()->run();
     });
+    
+    menu2->setCallback([](Ref *pSender)->void{
+        ExitWin::create();
+    });
+    
+    
+    
     auto mainMenu = Menu::create(menu1,menu2,menu3,nullptr);
     mainMenu->setPosition(Point::ZERO);
     wrapperNode->addChild(mainMenu);

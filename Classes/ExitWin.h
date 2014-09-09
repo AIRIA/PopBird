@@ -14,7 +14,14 @@
 class ExitWin:public Layer
 {
 public:
-    
+    virtual bool init();
+    CREATE_FUNC(ExitWin);
+    void show();
+    void hide();
+private:
+    LayerColor *bgLayer;
+    MenuItemSprite *cancleItem;
+    MenuItemSprite *exitItem;
 };
 
 #endif /* defined(__PopBird__ExitWin__) */
