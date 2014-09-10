@@ -112,9 +112,20 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
                 bird->bomb();
                 it++;
             }
+            
+            /* 根据消除的数量 播放不同的音效 */
+            auto listSize = m_vDashList.size();
+            if(listSize>6)
+            {
+                char effectName[20];
+                sprintf(effectName, "sounds/effects/%ld.mp3",listSize-6);
+                SimpleAudioEngine::getInstance()->playEffect(effectName);
+            }
+            
             m_vDashList.clear();
             __movePrevScore();
             _updateBirdsPosition();
+            
             return;
         }
         else
@@ -250,8 +261,29 @@ void PopScene::_updateBirdsPosition()
         }
         it++;
     }
-
-    MessageBox("NO DASH BIRD", "TITLE");
+    
+    
+    
+    /* 如果没有可以消除的小鸟后 就自动消除 最后一排全部消除 奖励2000 每剩余一个 扣除奖励50 */
+    auto delay = 1.0f;
+    for (auto row=ROW-1; row>=0; row--) {
+        for (auto col=0; col<COL; col++) {
+            auto idx = row*COL+col;
+            auto bird = birdVec.at(idx);
+            if (bird->getIsDestroy()) {
+                continue;
+            }
+            if(row>0)
+            {
+                delay += 0.4f;
+            }
+            bird->runAction(Sequence::create(DelayTime::create(delay),CallFuncN::create([](Node *node)->void{
+                auto bird = static_cast<Bird*>(node);
+                bird->bomb();
+            }), NULL));
+            
+        }
+    }
 }
 
 void PopScene::__showPrevScore(int birdNum)

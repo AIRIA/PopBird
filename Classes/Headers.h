@@ -11,8 +11,10 @@
 
 #include "cocos2d.h"
 #include "VisibleRect.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 #define SPRITE(url) Sprite::createWithSpriteFrameName(url)
 

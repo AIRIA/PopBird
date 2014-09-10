@@ -29,6 +29,15 @@ bool HomeScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_CN_RETINA.plist");
     
     
+    /* preload sounds */
+    
+    for(auto i=1;i<=9;i++)
+    {
+        char name[20];
+        sprintf(name, "sounds/effects/%d.mp3",i);
+        SimpleAudioEngine::getInstance()->preloadEffect(name);
+    }
+    
     __initBackground();
     __addBottomMenu();
     __addColorBirds();
