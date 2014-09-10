@@ -31,10 +31,10 @@ bool HomeScene::init()
     
     /* preload sounds */
     
-    for(auto i=1;i<=9;i++)
+    for(auto idx=1;idx<10;idx++)
     {
-        char name[20];
-        sprintf(name, "sounds/effects/%d.mp3",i);
+        char name[50];
+        sprintf(name, "sounds/effects/%d.mp3",idx);
         SimpleAudioEngine::getInstance()->preloadEffect(name);
     }
     

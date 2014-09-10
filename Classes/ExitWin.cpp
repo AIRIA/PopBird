@@ -85,7 +85,7 @@ void ExitWin::hide()
 {
     bgLayer->runAction(FadeOut::create(EXIT_ANIMATE_TIME));
     auto exitPanelBg = getChildByTag(kExitPanelBg);
-    exitPanelBg->runAction(Spawn::create(FadeOut::create(EXIT_ANIMATE_TIME),EaseBackIn::create(ScaleTo::create(EXIT_ANIMATE_TIME, 0)), NULL));
+    exitPanelBg->runAction(Spawn::create(FadeOut::create(EXIT_ANIMATE_TIME),EaseBackIn::create(ScaleTo::create(EXIT_ANIMATE_TIME, 0)), nullptr));
     exitItem->runAction(Spawn::create(FadeOut::create(EXIT_ANIMATE_TIME),MoveBy::create(EXIT_ANIMATE_TIME, Point(-MOVE_GAP,0)), nullptr));
     cancleItem->runAction(Spawn::create(FadeOut::create(EXIT_ANIMATE_TIME),MoveBy::create(EXIT_ANIMATE_TIME, Point(MOVE_GAP,0)), nullptr));
     runAction(Sequence::create(DelayTime::create(EXIT_ANIMATE_TIME),CCCallFuncN::create([](Node *obj)->void{

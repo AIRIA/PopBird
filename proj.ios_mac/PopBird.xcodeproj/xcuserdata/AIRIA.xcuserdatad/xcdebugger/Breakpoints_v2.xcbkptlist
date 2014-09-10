@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/HomeScene.cpp"
-            timestampString = "432018212.901292"
+            timestampString = "432029440.957847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/HomeScene.cpp"
-            timestampString = "432018212.901292"
+            timestampString = "432029440.957847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -48,22 +48,6 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "DemoBird::shake()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/PopScene.cpp"
-            timestampString = "432009644.164522"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "PopScene::_birdTouchHandler(BaseSprite *sprite)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -14,6 +14,8 @@ enum PopSceneTAG
 {
     kTagPrevLabel,
     kTagPrevLabelMark,
+    kTagRewardLabel,
+    kTagRewardWrapper
 };
 
 bool PopScene::init()
@@ -117,9 +119,51 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
             auto listSize = m_vDashList.size();
             if(listSize>6)
             {
-                char effectName[20];
-                sprintf(effectName, "sounds/effects/%ld.mp3",listSize-6);
+                auto size = (listSize-6)>9?9:listSize-6;
+                char effectName[50];
+                sprintf(effectName, "sounds/effects/%ld.mp3",size);
                 SimpleAudioEngine::getInstance()->playEffect(effectName);
+                std::string labelName = "";
+                switch (size) {
+                    case 1:
+                        labelName = "第一滴血";
+                        break;
+                    case 2:
+                        labelName = "大消特消";
+                        break;
+                    case 3:
+                        labelName = "主宰比赛";
+                        break;
+                    case 4:
+                        labelName = "消除如麻";
+                        break;
+                    case 5:
+                        labelName = "无人能挡";
+                        break;
+                    case 6:
+                        labelName = "变态的消除";
+                        break;
+                    case 7:
+                        labelName = "如同神一般";
+                        break;
+                    case 8:
+                        labelName = "超神了~";
+                        break;
+                    case 9:
+                        labelName = "超神了~";
+                        break;
+                    default:
+                        break;
+                }
+                
+                auto label = Label::createWithBMFont("fonts/font_01.fnt", labelName);
+                label->setPosition(VisibleRect::center());
+                label->setScale(0);
+                label->setOpacity(0);
+                label->runAction(Sequence::create(Spawn::create(FadeIn::create(0.3f),EaseBackOut::create(ScaleTo::create(0.3f, 1.0f)), nullptr),DelayTime::create(0.5f),Spawn::create(FadeOut::create(0.3f),EaseBackOut::create(ScaleTo::create(0.3f, 2.0f)), nullptr),CallFuncN::create([](Node *node)->void{
+                    node->removeFromParent();
+                }), nullptr));
+                addChild(label);
             }
             
             m_vDashList.clear();
@@ -238,7 +282,7 @@ void PopScene::_updateBirdsPosition()
             j++;
         }
     }
-//    return;
+
     /* 更新完之后需要 判断是不是有继续可以消除的 没有则结束游戏 */
     auto it = birdVec.begin();
     while (it!=birdVec.end()) {
@@ -262,8 +306,6 @@ void PopScene::_updateBirdsPosition()
         it++;
     }
     
-    
-    
     /* 如果没有可以消除的小鸟后 就自动消除 最后一排全部消除 奖励2000 每剩余一个 扣除奖励50 */
     auto delay = 1.0f;
     for (auto row=ROW-1; row>=0; row--) {
@@ -277,13 +319,52 @@ void PopScene::_updateBirdsPosition()
             {
                 delay += 0.4f;
             }
-            bird->runAction(Sequence::create(DelayTime::create(delay),CallFuncN::create([](Node *node)->void{
+            bird->runAction(Sequence::create(DelayTime::create(delay),CallFuncN::create([&](Node *node)->void{
                 auto bird = static_cast<Bird*>(node);
                 bird->bomb();
-            }), NULL));
+                auto label = static_cast<Label*>(this->getChildByTag(kTagRewardWrapper)->getChildByTag(kTagRewardLabel));
+                reward -= 50;
+                char rewardStr[50];
+                sprintf(rewardStr,"奖励:%d",reward);
+                label->setString(rewardStr);
+            }), nullptr));
             
         }
     }
+    
+    runAction(Sequence::create(DelayTime::create(delay+0.5),CallFunc::create([&]()->void{
+        auto fadeOutAct = FadeOut::create(0.3f);
+        auto scaleOutAct = ScaleTo::create(0.3f, 0.2f);
+        auto moveToAct = MoveTo::create(0.3f, Point(50,720));
+        
+        getChildByTag(kTagRewardWrapper)->runAction(Sequence::create(Spawn::create(fadeOutAct,scaleOutAct,moveToAct, nullptr),CallFuncN::create([&](Node *node)->void{
+            node->removeFromParent();
+            currentScore += reward;
+            char scoreLabel[50];
+            sprintf(scoreLabel, "当前分数:%d",currentScore);
+            currentScoreLabel->setString(scoreLabel);
+            /* 显示下次通关的分数 */
+            
+            
+        }), nullptr));
+    }), nullptr));
+    
+    __showGameReward();
+}
+
+void PopScene::__showGameReward()
+{
+    /* 显示游戏奖励 */
+    reward = 2000;
+    auto wrapperNode = Node::create();
+    auto label = Label::createWithBMFont("fonts/font_01.fnt", "奖励:2000");
+    label->setScale(0);
+    label->setTag(kTagRewardLabel);
+    label->runAction(EaseBackOut::create(ScaleTo::create(0.3f, 1.0f)));
+    wrapperNode->addChild(label);
+    wrapperNode->setPosition(VisibleRect::center());
+    wrapperNode->setTag(kTagRewardWrapper);
+    addChild(wrapperNode);
 }
 
 void PopScene::__showPrevScore(int birdNum)
@@ -307,7 +388,8 @@ void PopScene::__showPrevScore(int birdNum)
 void PopScene::__hidePrevScore()
 {
     auto prevLabel = getChildByTag(kTagPrevLabel);
-    if (prevLabel) {
+    if (prevLabel)
+    {
         prevLabel->removeFromParent();
     }
 }

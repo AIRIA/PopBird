@@ -29,6 +29,7 @@ private:
     Label *targetScoreLabel;
     int currentScore;
     int prevScore;
+    int reward;
     
     int targetScore;
     
@@ -45,6 +46,7 @@ private:
     void __showPrevScore(int birdNum);
     void __hidePrevScore();
     void __movePrevScore();
+    void __showGameReward();
     
 };
 
