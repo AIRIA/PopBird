@@ -146,21 +146,21 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
         
         for(auto i=row-1;i<=row+1;i++)
         {
-            if(i<0 || i>=ROW)
+            if(i<0 || i>=ROW) //检测是不是到了边界范围
             {
                 continue;
             }
             for (auto j=col-1; j<=col+1; j++)
             {
-                if((i!=row && j!=col )||j<0||j>=COL)
+                if((i!=row && j!=col )||j<0||j>=COL) //确定不是边界 并且在同一行或者同一列才继续
                 {
                     continue;
                 }
                 auto idx = i*COL+j;
                 auto neighbor = birdVec.at(idx);
-                if (neighbor!=selectBird && neighbor->getBirdType()==bird->getBirdType())
+                if (neighbor!=selectBird && neighbor->getBirdType()==bird->getBirdType()) //不对选中的小鸟进行监测 并且鸟的类型要一致
                 {
-                    if (neighbor->getSelect())
+                    if (neighbor->getSelect()) //已经选中的 不重复监测
                     {
                         continue;
                     }
@@ -168,14 +168,15 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
                     {
                         neighbor->setSelect(true);
                         selectBirdVec.pushBack(neighbor);
+                        m_vDashList.pushBack(neighbor);
                     }
-                    m_vDashList.pushBack(neighbor);
                 }
             }
         }
         selectBirdVec.eraseObject(selectBird);
     }
-    if(m_vDashList.size()<2)
+    
+    if(m_vDashList.size()<2) //如果相邻类型的小鸟数量小于2的话 则清空已经选中的小鸟
     {
         bird->setSelect(false);
         selectBirdVec.clear();
@@ -226,8 +227,31 @@ void PopScene::_updateBirdsPosition()
             j++;
         }
     }
+//    return;
     /* 更新完之后需要 判断是不是有继续可以消除的 没有则结束游戏 */
-    
+    auto it = birdVec.begin();
+    while (it!=birdVec.end()) {
+        auto bird = *it;
+        if(bird->getIsDestroy())
+        {
+            it++;
+            continue;
+        }
+        _birdTouchHandler(bird);
+        if (m_vDashList.size()>0) {
+            auto birdIt = m_vDashList.begin();
+            while (birdIt!=m_vDashList.end()) {
+                (*birdIt)->setIsDestroy(false);
+                (*birdIt)->setSelect(false);
+                birdIt++;
+            }
+            m_vDashList.clear();
+            return;
+        }
+        it++;
+    }
+
+    MessageBox("NO DASH BIRD", "TITLE");
 }
 
 void PopScene::__showPrevScore(int birdNum)
@@ -275,7 +299,7 @@ void PopScene::__movePrevScore()
         currentScoreLabel->setString(scoreLabel);
         if(currentScore>=targetScore)
         {
-            MessageBox("Stage Clear", "TITLE");
+//            MessageBox("Stage Clear", "TITLE");
         }
     }
 }
