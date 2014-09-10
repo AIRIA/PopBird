@@ -27,11 +27,14 @@ private:
     Vector<Bird*> birdVec;
     Label *currentScoreLabel;
     Label *targetScoreLabel;
-    int currentScore;
-    int prevScore;
-    int reward;
+    Node *birdWrapperNode;
+    int currentScore; //当前的分数
+    int prevScore; //预得分数
+    int reward; //奖励分数
     
-    int targetScore;
+    int targetScore = 1000; //通关分数
+    bool isLevelClear;//是否通关
+    int level = 1;
     
     void __initBackground();
     void __initBirds();

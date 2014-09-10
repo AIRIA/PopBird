@@ -65,7 +65,7 @@ void PopScene::__initBackground()
 
 void PopScene::__initBirds()
 {
-    auto birdWrapperNode = Node::create();
+    birdWrapperNode = Node::create();
     for (auto i=0; i<ROW*COL; i++) {
         auto bird = Bird::create(rand()%4);
         auto row = i/COL;
@@ -344,7 +344,28 @@ void PopScene::_updateBirdsPosition()
             sprintf(scoreLabel, "当前分数:%d",currentScore);
             currentScoreLabel->setString(scoreLabel);
             /* 显示下次通关的分数 */
-            
+            isLevelClear = false;
+            level++;
+            auto sum = 0;
+            for (auto i=1; i<=level; i++) {
+                sum += i;
+            }
+            targetScore = sum*1000;
+            targetScoreLabel->setString(__String::createWithFormat("%d",targetScore)->getCString());
+            /* 提示通关分数 */
+            auto passScoreLabel = Label::createWithBMFont("fonts/font_01.fnt", __String::createWithFormat("本次通关分数:%d",targetScore)->getCString());
+            passScoreLabel->setPosition(VisibleRect::right()+Point(200,0));
+            addChild(passScoreLabel);
+            auto moveToCenter = MoveTo::create(0.3f, VisibleRect::center());
+            auto moveOut = MoveTo::create(0.3f, VisibleRect::left()-Point(200,0));
+            auto showSeq = Sequence::create(EaseBackOut::create(moveToCenter),DelayTime::create(1.5f),EaseBackIn::create(moveOut),CallFuncN::create([&](Node *node)->void{
+                node->removeFromParent();
+                /* 开始重新生成小鸟 */
+                this->birdVec.clear();
+                this->birdWrapperNode->removeFromParent();
+                this->__initBirds();
+            }),nullptr);
+            passScoreLabel->runAction(showSeq);
             
         }), nullptr));
     }), nullptr));
@@ -411,9 +432,11 @@ void PopScene::__movePrevScore()
         char scoreLabel[50];
         sprintf(scoreLabel, "当前分数:%d",currentScore);
         currentScoreLabel->setString(scoreLabel);
-        if(currentScore>=targetScore)
+        if(currentScore>=targetScore && isLevelClear==false)
         {
-//            MessageBox("Stage Clear", "TITLE");
+            isLevelClear = true;
+            /* 通知通关 */
+            
         }
     }
 }
