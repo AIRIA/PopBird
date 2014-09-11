@@ -9,6 +9,7 @@
 #include "PopScene.h"
 #include "PauseSprite.h"
 #include "PauseLayer.h"
+#include "GameResultWin.h"
 
 enum PopSceneTAG
 {
@@ -30,8 +31,13 @@ bool PopScene::init()
     __initBirds();
     __initPauseButton();
     addChild(PauseLayer::create(),99999);
-
+    scheduleUpdate();
     return true;
+}
+
+void PopScene::update(float delta)
+{
+    playTime += delta;
 }
 
 void PopScene::__initBackground()
@@ -67,7 +73,7 @@ void PopScene::__initBirds()
 {
     birdWrapperNode = Node::create();
     for (auto i=0; i<ROW*COL; i++) {
-        auto bird = Bird::create(rand()%4);
+        auto bird = Bird::create(rand()%6);
         auto row = i/COL;
         auto col = i%COL;
         bird->setAnchorPoint(Point::ZERO);
@@ -117,6 +123,7 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
             
             /* 根据消除的数量 播放不同的音效 */
             auto listSize = m_vDashList.size();
+            birdDestroy += listSize;
             if(listSize>6)
             {
                 auto size = (listSize-6)>9?9:listSize-6;
@@ -307,7 +314,7 @@ void PopScene::_updateBirdsPosition()
     }
     
     /* 如果没有可以消除的小鸟后 就自动消除 最后一排全部消除 奖励2000 每剩余一个 扣除奖励50 */
-    auto delay = 1.0f;
+    auto delay = 0.5f;
     for (auto row=ROW-1; row>=0; row--) {
         for (auto col=0; col<COL; col++) {
             auto idx = row*COL+col;
@@ -315,11 +322,17 @@ void PopScene::_updateBirdsPosition()
             if (bird->getIsDestroy()) {
                 continue;
             }
+            
             if(row>0)
             {
-                delay += 0.4f;
+                delay = delay+0.4f;
             }
-            bird->runAction(Sequence::create(DelayTime::create(delay),CallFuncN::create([&](Node *node)->void{
+            auto delayTime = delay;
+            if(row==0)
+            {
+                delayTime = delay+0.4;
+            }
+            bird->runAction(Sequence::create(DelayTime::create(delayTime),CallFuncN::create([&](Node *node)->void{
                 auto bird = static_cast<Bird*>(node);
                 bird->bomb();
                 auto label = static_cast<Label*>(this->getChildByTag(kTagRewardWrapper)->getChildByTag(kTagRewardLabel));
@@ -332,7 +345,7 @@ void PopScene::_updateBirdsPosition()
         }
     }
     
-    runAction(Sequence::create(DelayTime::create(delay+0.5),CallFunc::create([&]()->void{
+    runAction(Sequence::create(DelayTime::create(delay+1),CallFunc::create([&]()->void{
         auto fadeOutAct = FadeOut::create(0.3f);
         auto scaleOutAct = ScaleTo::create(0.3f, 0.2f);
         auto moveToAct = MoveTo::create(0.3f, Point(50,720));
@@ -343,6 +356,16 @@ void PopScene::_updateBirdsPosition()
             char scoreLabel[50];
             sprintf(scoreLabel, "当前分数:%d",currentScore);
             currentScoreLabel->setString(scoreLabel);
+            /* 判断是否通关了 */
+            if (currentScore<targetScore)
+            {
+                auto time = int(playTime);
+                char timeStr[50];
+                sprintf(timeStr, "%d秒",time);
+                GameResultWin::create(level,timeStr, birdDestroy, currentScore);
+                return;
+            }
+            
             /* 显示下次通关的分数 */
             isLevelClear = false;
             level++;

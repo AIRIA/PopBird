@@ -21,6 +21,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		4161409419C1553500545F37 /* game_over in Resources */ = {isa = PBXBuildFile; fileRef = 4161409319C1553500545F37 /* game_over */; };
+		4161409519C1553500545F37 /* game_over in Resources */ = {isa = PBXBuildFile; fileRef = 4161409319C1553500545F37 /* game_over */; };
+		4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4161409819C155DC00545F37 /* GameResultWin.cpp */; };
+		4161409B19C155DC00545F37 /* GameResultWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4161409819C155DC00545F37 /* GameResultWin.cpp */; };
 		4180102619BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
 		4180102719BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
 		4180102B19BEB0280081EFE8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4180102A19BEB0280081EFE8 /* fonts */; };
@@ -249,6 +253,9 @@
 		1D6058910D05DD3D006BFB54 /* PopBird iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PopBird iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4161409319C1553500545F37 /* game_over */ = {isa = PBXFileReference; lastKnownFileType = folder; path = game_over; sourceTree = "<group>"; };
+		4161409819C155DC00545F37 /* GameResultWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameResultWin.cpp; path = ../Classes/GameResultWin.cpp; sourceTree = "<group>"; };
+		4161409919C155DC00545F37 /* GameResultWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResultWin.h; path = ../Classes/GameResultWin.h; sourceTree = "<group>"; };
 		4180102519BE9D4C0081EFE8 /* exit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = exit; sourceTree = "<group>"; };
 		4180102A19BEB0280081EFE8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		4180102D19C010A70081EFE8 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
@@ -411,6 +418,8 @@
 				418849FD19B9A86D00F90CDF /* PauseSprite.h */,
 				41884A0019B9A8C000F90CDF /* BaseSprite.cpp */,
 				41884A0119B9A8C000F90CDF /* BaseSprite.h */,
+				4161409819C155DC00545F37 /* GameResultWin.cpp */,
+				4161409919C155DC00545F37 /* GameResultWin.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -526,6 +535,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4161409319C1553500545F37 /* game_over */,
 				4180102D19C010A70081EFE8 /* sounds */,
 				4180102A19BEB0280081EFE8 /* fonts */,
 				4180102519BE9D4C0081EFE8 /* exit */,
@@ -721,6 +731,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				4161409419C1553500545F37 /* game_over in Resources */,
 				4180102619BE9D4C0081EFE8 /* exit in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -736,6 +747,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				4180102C19BEB0280081EFE8 /* fonts in Resources */,
 				4180102719BE9D4C0081EFE8 /* exit in Resources */,
+				4161409519C1553500545F37 /* game_over in Resources */,
 				41884A0619B9B78900F90CDF /* pause in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,6 +768,7 @@
 				41E7A2A519B5AC19004EA538 /* HomeScene.cpp in Sources */,
 				41E7A2DC19B6F0D8004EA538 /* Bird.cpp in Sources */,
 				418849F419B9A39700F90CDF /* PauseLayer.cpp in Sources */,
+				4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */,
 				41E7A2D119B5B539004EA538 /* VisibleRect.cpp in Sources */,
 				418849FE19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A119B5AA9F004EA538 /* BaseScene.cpp in Sources */,
@@ -770,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				418849FB19B9A3B100F90CDF /* ExitWin.cpp in Sources */,
+				4161409B19C155DC00545F37 /* GameResultWin.cpp in Sources */,
 				41884A0319B9A8C000F90CDF /* BaseSprite.cpp in Sources */,
 				418849FF19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A619B5AC19004EA538 /* HomeScene.cpp in Sources */,

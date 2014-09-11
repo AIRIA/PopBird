@@ -17,7 +17,7 @@ class PopScene:public BaseScene
 public:
     virtual bool init();
     CREATE_FUNC(PopScene);
-    
+    virtual void update(float delta);
 protected:
     Vector<Bird*> m_vDashList;
     void _birdTouchHandler(BaseSprite *bird);
@@ -32,9 +32,11 @@ private:
     int prevScore; //预得分数
     int reward; //奖励分数
     
-    int targetScore = 1000; //通关分数
+    int targetScore = 5000; //通关分数
     bool isLevelClear;//是否通关
     int level = 1;
+    int birdDestroy = 0;//销毁的小鸟
+    float playTime= 0;//玩的时间
     
     void __initBackground();
     void __initBirds();
