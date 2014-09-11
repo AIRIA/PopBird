@@ -24,5 +24,6 @@ using namespace CocosDenshion;
 #define COL 10
 
 #define EVENT_PAUSE_GAME "event_pause_game"
+#define EVENT_RESTART_GAME "event_restart_game"
 
 #endif

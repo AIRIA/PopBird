@@ -7,6 +7,7 @@
 //
 
 #include "GameResultWin.h"
+#include "HomeScene.h"
 
 GameResultWin *GameResultWin::create(int level, std::string playTime, int birdDestroy, int score)
 {
@@ -68,7 +69,16 @@ void GameResultWin::__show()
     auto restartItem = MenuItemSprite::create(restartNormal, SPRITE("stage_gameover_restart_china@2x.png"));
     auto menu = Menu::create(quitItem,restartItem, nullptr);
     quitItem->setPosition(Point(-123,-242));
+    quitItem->setCallback([](Ref *pSender)->void{
+        HomeScene::create()->run();
+    });
     restartItem->setPosition(Point(123,-242));
+    restartItem->setCallback([&,wrapper,bg](Ref *pSender)->void{
+        wrapper->runAction(EaseBackIn::create(MoveBy::create(0.3f, Point(0,900))));
+        bg->runAction(Sequence::create(FadeOut::create(0.3f),CallFunc::create([&]()->void{
+            getEventDispatcher()->dispatchCustomEvent(EVENT_RESTART_GAME);
+        }), NULL));
+    });
     menu->setPosition(Point::ZERO);
     wrapper->addChild(menu);
     wrapper->runAction(EaseBackOut::create(MoveTo::create(0.3f, VisibleRect::center())));

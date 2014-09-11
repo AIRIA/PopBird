@@ -464,6 +464,31 @@ void PopScene::__movePrevScore()
     }
 }
 
+void PopScene::onEnter()
+{
+    BaseScene::onEnter();
+    
+    getEventDispatcher()->addCustomEventListener(EVENT_RESTART_GAME, [&](EventCustom *custom)->void{
+        this->level = 1;
+        this->targetScore = 1000;
+        this->playTime = 0;
+        this->birdDestroy = 0;
+        this->currentScore = 0;
+        this->reward = 0;
+        this->isLevelClear = false;
+        this->birdVec.clear();
+        this->birdWrapperNode->removeFromParent();
+        this->__initBirds();
+    });
+    
+}
+
+void PopScene::onExit()
+{
+    BaseScene::onExit();
+    getEventDispatcher()->removeEventListenersForTarget(this);
+}
+
 void PopScene::__gameStart()
 {
     auto animate_time = 0.2f;

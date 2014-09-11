@@ -18,6 +18,8 @@ public:
     virtual bool init();
     CREATE_FUNC(PopScene);
     virtual void update(float delta);
+    virtual void onEnter();
+    virtual void onExit();
 protected:
     Vector<Bird*> m_vDashList;
     void _birdTouchHandler(BaseSprite *bird);
