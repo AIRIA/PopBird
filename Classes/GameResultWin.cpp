@@ -77,7 +77,7 @@ void GameResultWin::__show()
         wrapper->runAction(EaseBackIn::create(MoveBy::create(0.3f, Point(0,900))));
         bg->runAction(Sequence::create(FadeOut::create(0.3f),CallFunc::create([&]()->void{
             getEventDispatcher()->dispatchCustomEvent(EVENT_RESTART_GAME);
-        }), NULL));
+        }), nullptr));
     });
     menu->setPosition(Point::ZERO);
     wrapper->addChild(menu);

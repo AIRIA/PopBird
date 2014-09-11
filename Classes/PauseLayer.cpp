@@ -64,6 +64,11 @@ void PauseLayer::show()
         this->hide();
     });
     
+    restartItem->setCallback([&](Ref *pSender)->void{
+        this->hide();
+        getEventDispatcher()->dispatchCustomEvent(EVENT_RESTART_GAME);
+    });
+    
     wrapperNode->addChild(menuBg);
     wrapperNode->addChild(pauseMenu);
     

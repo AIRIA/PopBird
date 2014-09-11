@@ -291,6 +291,7 @@ void PopScene::_updateBirdsPosition()
     }
 
     /* 更新完之后需要 判断是不是有继续可以消除的 没有则结束游戏 */
+    isTest = true;
     auto it = birdVec.begin();
     while (it!=birdVec.end()) {
         auto bird = *it;
@@ -308,6 +309,7 @@ void PopScene::_updateBirdsPosition()
                 birdIt++;
             }
             m_vDashList.clear();
+            isTest = false;
             return;
         }
         it++;
@@ -376,7 +378,7 @@ void PopScene::_updateBirdsPosition()
             targetScore = sum*1000;
             targetScoreLabel->setString(__String::createWithFormat("%d",targetScore)->getCString());
             /* 提示通关分数 */
-            auto passScoreLabel = Label::createWithBMFont("fonts/font_01.fnt", __String::createWithFormat("本次通关分数:%d",targetScore)->getCString());
+            auto passScoreLabel = Label::createWithBMFont("fonts/font_01.fnt", __String::createWithFormat("通关分数:%d",targetScore)->getCString());
             passScoreLabel->setPosition(VisibleRect::right()+Point(200,0));
             addChild(passScoreLabel);
             auto moveToCenter = MoveTo::create(0.3f, VisibleRect::center());
@@ -413,6 +415,10 @@ void PopScene::__showGameReward()
 
 void PopScene::__showPrevScore(int birdNum)
 {
+    if(isTest)
+    {
+        return;
+    }
     __hidePrevScore();
     prevScore = ((birdNum-2)*5+10)*birdNum;
     char scoreStr[50];
@@ -479,6 +485,11 @@ void PopScene::onEnter()
         this->birdVec.clear();
         this->birdWrapperNode->removeFromParent();
         this->__initBirds();
+        this->isTest = false;
+        char scoreLabel[50];
+        sprintf(scoreLabel, "当前分数:%d",currentScore);
+        currentScoreLabel->setString(scoreLabel);
+        targetScoreLabel->setString(__String::createWithFormat("%d",targetScore)->getCString());
     });
     
 }

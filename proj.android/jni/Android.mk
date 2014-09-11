@@ -22,7 +22,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/DemoBird.cpp \
                    ../../Classes/PauseLayer.cpp \
                    ../../Classes/PauseSprite.cpp \
-                   ../../Classes/ExitWin.cpp 
+                   ../../Classes/ExitWin.cpp \
+                   ../../Classes/GameResultWin.cpp 
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
