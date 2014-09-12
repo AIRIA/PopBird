@@ -11,6 +11,7 @@
 #include "DemoBird.h"
 #include "ExitWin.h"
 #include "GameResultWin.h"
+#include "OptionScene.h"
 
 bool HomeScene::init()
 {
@@ -29,6 +30,9 @@ bool HomeScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_CN_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("fonts/stage_RETINA.plist");
+    
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("option/option_CN_RETINA.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("option/option_RETINA.plist");
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_over/gameover_CN_RETINA.plist");
     
@@ -103,6 +107,10 @@ void HomeScene::__initBackground()
 void HomeScene::__addBottomMenu()
 {
     auto settingMenu = MenuItemSprite::create(SPRITE("main_option_china@2x.png"), SPRITE("main_option_push_china@2x.png"));
+    settingMenu->setCallback([](Ref *pSender)->void{
+        OptionScene::create()->run();
+    });
+    
     auto rankMenu = MenuItemSprite::create(SPRITE("main_rank_china@2x.png"), SPRITE("main_rank_push_china@2x.png"));
     auto bottomMenu = Menu::create(settingMenu,rankMenu, nullptr);
     bottomMenu->setPosition(Point::ZERO);

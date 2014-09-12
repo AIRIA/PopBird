@@ -10,6 +10,7 @@
 #define __PopBird__BaseScene__
 
 #include "BaseLayer.h"
+#include "Util.h"
 
 class BaseScene:public BaseLayer
 {

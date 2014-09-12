@@ -51,13 +51,24 @@ void PauseLayer::show()
     auto restartItem = MenuItemSprite::create(SPRITE("paused_restart_normal_china.png"),SPRITE("paused_restart_push_china.png"));
     auto resumeItem = MenuItemSprite::create(SPRITE("paused_resume_normal_china.png"),SPRITE("paused_resume_push_china.png"));
     auto saveItem = MenuItemSprite::create(SPRITE("paused_savequit_normal_china.png"),SPRITE("paused_savequit_push_china.png"));
-    auto soundItem = MenuItemSprite::create(SPRITE("paused_sound_off.png"), SPRITE("paused_sound_on.png"));
     
-    auto pauseMenu = Menu::create(restartItem,resumeItem,saveItem,soundItem,nullptr);
+    auto soundToogleItem = MenuItemToggle::createWithCallback([](Ref *pSender)->void{}, MenuItemSprite::create(SPRITE("paused_sound_on.png"), SPRITE("paused_sound_on.png")),MenuItemSprite::create(SPRITE("paused_sound_off.png"), SPRITE("paused_sound_off.png")),nullptr);
+    
+    soundToogleItem->setCallback([](Ref *pSender)->void{
+        auto toogleItem = static_cast<MenuItemToggle*>(pSender);
+        auto idx = toogleItem->getSelectedIndex();
+        if (idx==0) {
+            SharePreference->setBoolForKey(KEY_SOUND_ENABLE, true);
+            return;
+        }
+        SharePreference->setBoolForKey(KEY_SOUND_ENABLE, false);
+    });
+    
+    auto pauseMenu = Menu::create(restartItem,resumeItem,saveItem,soundToogleItem,nullptr);
     resumeItem->setPosition(Point(380,280));
     restartItem->setPosition(Point(380,180));
     saveItem->setPosition(Point(380,80));
-    soundItem->setPosition(Point(65,230));
+    soundToogleItem->setPosition(Point(65,230));
     pauseMenu->setPosition(Point::ZERO);
     
     resumeItem->setCallback([&](Ref *pSender)->void{
@@ -75,6 +86,10 @@ void PauseLayer::show()
     addChild(wrapperNode);
     wrapperNode->setPositionY(-463);
     wrapperNode->runAction(MoveTo::create(ANIMATE_TIME, Point::ZERO));
+    
+    auto soundSelectIdx = SharePreference->getBoolForKey(KEY_SOUND_ENABLE)?0:1;
+    soundToogleItem->setSelectedIndex(soundSelectIdx);
+    
 }
 
 void PauseLayer::hide()

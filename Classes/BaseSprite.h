@@ -14,6 +14,7 @@
 class BaseSprite:public Sprite
 {
 public:
+    
     void setTouchEndedHandler(std::function<void(BaseSprite*)> handler);
     void setTouchMovedHandler(std::function<void(BaseSprite*)> handler);
     void setTouchBeganHandler(std::function<void(BaseSprite*)> handler);
@@ -24,6 +25,7 @@ protected:
     std::function<void(BaseSprite*)> touchBeganHandler;
 
     void __initEventListener();
+    
 };
 
 #endif /* defined(__PopBird__BaseSprite__) */

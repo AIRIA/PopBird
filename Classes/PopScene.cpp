@@ -130,7 +130,7 @@ void PopScene::_birdTouchHandler(BaseSprite *sprite)
                 auto size = (listSize-6)>9?9:listSize-6;
                 char effectName[50];
                 sprintf(effectName, "sounds/effects/%ld.mp3",size);
-                SimpleAudioEngine::getInstance()->playEffect(effectName);
+                Util::playEffect(effectName);
                 std::string labelName = "";
                 switch (size) {
                     case 1:

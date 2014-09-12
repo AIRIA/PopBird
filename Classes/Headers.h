@@ -26,4 +26,9 @@ using namespace CocosDenshion;
 #define EVENT_PAUSE_GAME "event_pause_game"
 #define EVENT_RESTART_GAME "event_restart_game"
 
+#define KEY_SOUND_ENABLE "sound_enable"
+#define KEY_VIBRATION_ENABLE "vibration_enable"
+
+#define SharePreference UserDefault::getInstance()
+
 #endif

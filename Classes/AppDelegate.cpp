@@ -25,6 +25,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     HomeScene::create()->run();
     srand(time(nullptr));
+    Util::init();
     return true;
 }
 

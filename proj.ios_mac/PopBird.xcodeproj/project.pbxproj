@@ -59,6 +59,12 @@
 		41E7A2DD19B6F0D8004EA538 /* Bird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A2DA19B6F0D7004EA538 /* Bird.cpp */; };
 		41E7A2E019B71AE9004EA538 /* DemoBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A2DE19B71AE9004EA538 /* DemoBird.cpp */; };
 		41E7A2E119B71AE9004EA538 /* DemoBird.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A2DE19B71AE9004EA538 /* DemoBird.cpp */; };
+		41F335DD19C2B118003649E5 /* option in Resources */ = {isa = PBXBuildFile; fileRef = 41F335DC19C2B117003649E5 /* option */; };
+		41F335DE19C2B118003649E5 /* option in Resources */ = {isa = PBXBuildFile; fileRef = 41F335DC19C2B117003649E5 /* option */; };
+		41F335E319C2B150003649E5 /* OptionScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F335E119C2B150003649E5 /* OptionScene.cpp */; };
+		41F335E419C2B150003649E5 /* OptionScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F335E119C2B150003649E5 /* OptionScene.cpp */; };
+		41F335E719C2DF72003649E5 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F335E519C2DF72003649E5 /* Util.cpp */; };
+		41F335E819C2DF72003649E5 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41F335E519C2DF72003649E5 /* Util.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -285,6 +291,11 @@
 		41E7A2DB19B6F0D8004EA538 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bird.h; path = ../Classes/Bird.h; sourceTree = "<group>"; };
 		41E7A2DE19B71AE9004EA538 /* DemoBird.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemoBird.cpp; path = ../Classes/DemoBird.cpp; sourceTree = "<group>"; };
 		41E7A2DF19B71AE9004EA538 /* DemoBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoBird.h; path = ../Classes/DemoBird.h; sourceTree = "<group>"; };
+		41F335DC19C2B117003649E5 /* option */ = {isa = PBXFileReference; lastKnownFileType = folder; path = option; sourceTree = "<group>"; };
+		41F335E119C2B150003649E5 /* OptionScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionScene.cpp; path = ../Classes/OptionScene.cpp; sourceTree = "<group>"; };
+		41F335E219C2B150003649E5 /* OptionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionScene.h; path = ../Classes/OptionScene.h; sourceTree = "<group>"; };
+		41F335E519C2DF72003649E5 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = ../Classes/Util.cpp; sourceTree = "<group>"; };
+		41F335E619C2DF72003649E5 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../Classes/Util.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -420,6 +431,10 @@
 				41884A0119B9A8C000F90CDF /* BaseSprite.h */,
 				4161409819C155DC00545F37 /* GameResultWin.cpp */,
 				4161409919C155DC00545F37 /* GameResultWin.h */,
+				41F335E119C2B150003649E5 /* OptionScene.cpp */,
+				41F335E219C2B150003649E5 /* OptionScene.h */,
+				41F335E519C2DF72003649E5 /* Util.cpp */,
+				41F335E619C2DF72003649E5 /* Util.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -535,6 +550,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				41F335DC19C2B117003649E5 /* option */,
 				4161409319C1553500545F37 /* game_over */,
 				4180102D19C010A70081EFE8 /* sounds */,
 				4180102A19BEB0280081EFE8 /* fonts */,
@@ -734,6 +750,7 @@
 				4161409419C1553500545F37 /* game_over in Resources */,
 				4180102619BE9D4C0081EFE8 /* exit in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				41F335DD19C2B118003649E5 /* option in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +760,7 @@
 			files = (
 				41E7A2CE19B5B0FC004EA538 /* main_menu in Resources */,
 				41E7A2D919B6BA82004EA538 /* game_asset in Resources */,
+				41F335DE19C2B118003649E5 /* option in Resources */,
 				4180102F19C010A70081EFE8 /* sounds in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				4180102C19BEB0280081EFE8 /* fonts in Resources */,
@@ -768,12 +786,14 @@
 				41E7A2A519B5AC19004EA538 /* HomeScene.cpp in Sources */,
 				41E7A2DC19B6F0D8004EA538 /* Bird.cpp in Sources */,
 				418849F419B9A39700F90CDF /* PauseLayer.cpp in Sources */,
+				41F335E719C2DF72003649E5 /* Util.cpp in Sources */,
 				4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */,
 				41E7A2D119B5B539004EA538 /* VisibleRect.cpp in Sources */,
 				418849FE19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A119B5AA9F004EA538 /* BaseScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				41E7A2D519B6B5C2004EA538 /* PopScene.cpp in Sources */,
+				41F335E319C2B150003649E5 /* OptionScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,7 +809,9 @@
 				41E7A2A619B5AC19004EA538 /* HomeScene.cpp in Sources */,
 				41E7A2D619B6B5C2004EA538 /* PopScene.cpp in Sources */,
 				41E7A2DD19B6F0D8004EA538 /* Bird.cpp in Sources */,
+				41F335E819C2DF72003649E5 /* Util.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				41F335E419C2B150003649E5 /* OptionScene.cpp in Sources */,
 				41E7A2D219B5B539004EA538 /* VisibleRect.cpp in Sources */,
 				41E7A2E119B71AE9004EA538 /* DemoBird.cpp in Sources */,
 				418849F519B9A39700F90CDF /* PauseLayer.cpp in Sources */,
