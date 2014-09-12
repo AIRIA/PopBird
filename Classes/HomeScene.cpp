@@ -28,6 +28,7 @@ bool HomeScene::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_asset/trophy_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_RETINA.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("pause/paused_CN_RETINA.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("fonts/stage_RETINA.plist");
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_over/gameover_CN_RETINA.plist");
     

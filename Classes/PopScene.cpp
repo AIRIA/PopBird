@@ -71,9 +71,10 @@ void PopScene::__initBackground()
 
 void PopScene::__initBirds()
 {
+    isTest = false;
     birdWrapperNode = Node::create();
     for (auto i=0; i<ROW*COL; i++) {
-        auto bird = Bird::create(rand()%6);
+        auto bird = Bird::create(rand()%2);
         auto row = i/COL;
         auto col = i%COL;
         bird->setAnchorPoint(Point::ZERO);
@@ -461,11 +462,29 @@ void PopScene::__movePrevScore()
         char scoreLabel[50];
         sprintf(scoreLabel, "当前分数:%d",currentScore);
         currentScoreLabel->setString(scoreLabel);
-        if(currentScore>=targetScore && isLevelClear==false)
+        if(currentScore>=targetScore && isLevelClear==false) //确保每一关只提示一次
         {
             isLevelClear = true;
             /* 通知通关 */
+            auto bg = SPRITE("stage_level_bg@2x.png");
+            bg->setPosition(VisibleRect::center());
+            auto bgSize = bg->getContentSize();
+            auto label = Label::createWithBMFont("fonts/font_01.fnt", "恭喜通关~");
+            label->setPosition(Point(bgSize.width/2,bgSize.height/2));
+            bg->addChild(label);
+            addChild(bg);
+            bg->setScale(3);
+            bg->setOpacity(0);
+            auto scaleIn = ScaleTo::create(0.3f, 1.0f);
+            auto fadeIn = FadeIn::create(0.3f);
+            auto scaleInEase = EaseBackOut::create(scaleIn);
+            auto spawnIn = Spawn::create(fadeIn,scaleInEase, nullptr);
             
+            auto scaleOutEase = EaseBackIn::create(MoveBy::create(0.3f, Point(0,700)));
+            auto fadeOut = FadeOut::create(0.3f);
+            auto callback = CallFunc::create(CC_CALLBACK_0(Node::removeFromParent, bg));
+            auto spawnOut = Spawn::create(fadeOut,scaleOutEase, nullptr);
+            bg->runAction(Sequence::create(spawnIn,DelayTime::create(0.5f), spawnOut,callback, nullptr));
         }
     }
 }
