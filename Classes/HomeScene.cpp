@@ -12,6 +12,7 @@
 #include "ExitWin.h"
 #include "GameResultWin.h"
 #include "OptionScene.h"
+#include "RankScene.h"
 
 bool HomeScene::init()
 {
@@ -112,6 +113,10 @@ void HomeScene::__addBottomMenu()
     });
     
     auto rankMenu = MenuItemSprite::create(SPRITE("main_rank_china@2x.png"), SPRITE("main_rank_push_china@2x.png"));
+    
+    rankMenu->setCallback([](Ref *pSender)->void{
+        RankScene::create()->run();
+    });
     auto bottomMenu = Menu::create(settingMenu,rankMenu, nullptr);
     bottomMenu->setPosition(Point::ZERO);
     settingMenu->setPosition(Point(65,120));

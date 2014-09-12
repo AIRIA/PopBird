@@ -41,6 +41,10 @@
 		41884A0319B9A8C000F90CDF /* BaseSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41884A0019B9A8C000F90CDF /* BaseSprite.cpp */; };
 		41884A0519B9B78900F90CDF /* pause in Resources */ = {isa = PBXBuildFile; fileRef = 41884A0419B9B78900F90CDF /* pause */; };
 		41884A0619B9B78900F90CDF /* pause in Resources */ = {isa = PBXBuildFile; fileRef = 41884A0419B9B78900F90CDF /* pause */; };
+		41E6C9F819C2F2B700C2CFFC /* rank in Resources */ = {isa = PBXBuildFile; fileRef = 41E6C9F719C2F2B700C2CFFC /* rank */; };
+		41E6C9F919C2F2B700C2CFFC /* rank in Resources */ = {isa = PBXBuildFile; fileRef = 41E6C9F719C2F2B700C2CFFC /* rank */; };
+		41E6C9FE19C2F2C900C2CFFC /* RankScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E6C9FC19C2F2C900C2CFFC /* RankScene.cpp */; };
+		41E6C9FF19C2F2C900C2CFFC /* RankScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E6C9FC19C2F2C900C2CFFC /* RankScene.cpp */; };
 		41E7A29C19B5AA10004EA538 /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A29A19B5AA10004EA538 /* BaseLayer.cpp */; };
 		41E7A29D19B5AA10004EA538 /* BaseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A29A19B5AA10004EA538 /* BaseLayer.cpp */; };
 		41E7A2A119B5AA9F004EA538 /* BaseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41E7A29F19B5AA9F004EA538 /* BaseScene.cpp */; };
@@ -274,6 +278,9 @@
 		41884A0019B9A8C000F90CDF /* BaseSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseSprite.cpp; path = ../Classes/BaseSprite.cpp; sourceTree = "<group>"; };
 		41884A0119B9A8C000F90CDF /* BaseSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseSprite.h; path = ../Classes/BaseSprite.h; sourceTree = "<group>"; };
 		41884A0419B9B78900F90CDF /* pause */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pause; sourceTree = "<group>"; };
+		41E6C9F719C2F2B700C2CFFC /* rank */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rank; sourceTree = "<group>"; };
+		41E6C9FC19C2F2C900C2CFFC /* RankScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankScene.cpp; path = ../Classes/RankScene.cpp; sourceTree = "<group>"; };
+		41E6C9FD19C2F2C900C2CFFC /* RankScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankScene.h; path = ../Classes/RankScene.h; sourceTree = "<group>"; };
 		41E7A29A19B5AA10004EA538 /* BaseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseLayer.cpp; path = ../Classes/BaseLayer.cpp; sourceTree = "<group>"; };
 		41E7A29B19B5AA10004EA538 /* BaseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseLayer.h; path = ../Classes/BaseLayer.h; sourceTree = "<group>"; };
 		41E7A29E19B5AA3B004EA538 /* Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Headers.h; path = ../Classes/Headers.h; sourceTree = "<group>"; };
@@ -435,6 +442,8 @@
 				41F335E219C2B150003649E5 /* OptionScene.h */,
 				41F335E519C2DF72003649E5 /* Util.cpp */,
 				41F335E619C2DF72003649E5 /* Util.h */,
+				41E6C9FC19C2F2C900C2CFFC /* RankScene.cpp */,
+				41E6C9FD19C2F2C900C2CFFC /* RankScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -550,6 +559,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				41E6C9F719C2F2B700C2CFFC /* rank */,
 				41F335DC19C2B117003649E5 /* option */,
 				4161409319C1553500545F37 /* game_over */,
 				4180102D19C010A70081EFE8 /* sounds */,
@@ -736,6 +746,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				41E7A2D819B6BA82004EA538 /* game_asset in Resources */,
+				41E6C9F819C2F2B700C2CFFC /* rank in Resources */,
 				41E7A2CD19B5B0FC004EA538 /* main_menu in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -762,6 +773,7 @@
 				41E7A2D919B6BA82004EA538 /* game_asset in Resources */,
 				41F335DE19C2B118003649E5 /* option in Resources */,
 				4180102F19C010A70081EFE8 /* sounds in Resources */,
+				41E6C9F919C2F2B700C2CFFC /* rank in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				4180102C19BEB0280081EFE8 /* fonts in Resources */,
 				4180102719BE9D4C0081EFE8 /* exit in Resources */,
@@ -785,6 +797,7 @@
 				41E7A29C19B5AA10004EA538 /* BaseLayer.cpp in Sources */,
 				41E7A2A519B5AC19004EA538 /* HomeScene.cpp in Sources */,
 				41E7A2DC19B6F0D8004EA538 /* Bird.cpp in Sources */,
+				41E6C9FE19C2F2C900C2CFFC /* RankScene.cpp in Sources */,
 				418849F419B9A39700F90CDF /* PauseLayer.cpp in Sources */,
 				41F335E719C2DF72003649E5 /* Util.cpp in Sources */,
 				4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */,
@@ -808,6 +821,7 @@
 				418849FF19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A619B5AC19004EA538 /* HomeScene.cpp in Sources */,
 				41E7A2D619B6B5C2004EA538 /* PopScene.cpp in Sources */,
+				41E6C9FF19C2F2C900C2CFFC /* RankScene.cpp in Sources */,
 				41E7A2DD19B6F0D8004EA538 /* Bird.cpp in Sources */,
 				41F335E819C2DF72003649E5 /* Util.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,

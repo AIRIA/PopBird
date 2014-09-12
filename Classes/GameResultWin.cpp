@@ -83,4 +83,27 @@ void GameResultWin::__show()
     wrapper->addChild(menu);
     wrapper->runAction(EaseBackOut::create(MoveTo::create(0.3f, VisibleRect::center())));
     
+    /* 储存分数前五名 */
+    std::vector<int> records;
+    for(auto i=0;i<5;i++)
+    {
+        char key[50];
+        sprintf(key, "record_%d",i);
+        auto record = SharePreference->getIntegerForKey(key);
+        records.push_back(record);
+    }
+    
+    for (auto i=0; i<5; i++)
+    {
+        auto score = records.at(i);
+        if (m_iScore>score)
+        {
+            records.insert(records.begin()+i,m_iScore);
+        }
+    }
+    records.erase(records.end()-1);
+    
+       
+    
+    
 }
