@@ -54,6 +54,31 @@ bool HomeScene::init()
     return true;
 }
 
+void HomeScene::onEnter()
+{
+    BaseScene::onEnter();
+    getEventDispatcher()->addCustomEventListener(EVENT_SHOW_EXIT, [&](EventCustom *custom)->void{
+        if (isShowExit==true)
+        {
+            exitWin->hide();
+            return;
+        }
+        isShowExit = true;
+        this->scheduleOnce(schedule_selector(HomeScene::__showExit), 0.1f);
+    });
+}
+
+void HomeScene::__showExit(float delta)
+{
+    exitWin = ExitWin::create();
+}
+
+void HomeScene::onExit()
+{
+    BaseScene::onExit();
+    getEventDispatcher()->removeCustomEventListeners(EVENT_SHOW_EXIT);
+}
+
 void HomeScene::__initBackground()
 {
     auto createSpriteFun = [](std::string sprName,Point anchorPos,Point sprPos,Node *parent,bool isDemoBird=false,int type=0)->Sprite*
@@ -152,7 +177,6 @@ void HomeScene::__addMainMenu()
     
     menu2->setCallback([](Ref *pSender)->void{
         MessageBox("敬请期待", "提示");
-//        ExitWin::create();
     });
     
     menu3->setCallback([](Ref *pSender)->void{

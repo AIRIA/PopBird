@@ -25,6 +25,8 @@
 		4161409519C1553500545F37 /* game_over in Resources */ = {isa = PBXBuildFile; fileRef = 4161409319C1553500545F37 /* game_over */; };
 		4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4161409819C155DC00545F37 /* GameResultWin.cpp */; };
 		4161409B19C155DC00545F37 /* GameResultWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4161409819C155DC00545F37 /* GameResultWin.cpp */; };
+		4172DFE519C6F909000CD30C /* ShareVars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4172DFE319C6F908000CD30C /* ShareVars.cpp */; };
+		4172DFE619C6F909000CD30C /* ShareVars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4172DFE319C6F908000CD30C /* ShareVars.cpp */; };
 		4180102619BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
 		4180102719BE9D4C0081EFE8 /* exit in Resources */ = {isa = PBXBuildFile; fileRef = 4180102519BE9D4C0081EFE8 /* exit */; };
 		4180102B19BEB0280081EFE8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4180102A19BEB0280081EFE8 /* fonts */; };
@@ -266,6 +268,8 @@
 		4161409319C1553500545F37 /* game_over */ = {isa = PBXFileReference; lastKnownFileType = folder; path = game_over; sourceTree = "<group>"; };
 		4161409819C155DC00545F37 /* GameResultWin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameResultWin.cpp; path = ../Classes/GameResultWin.cpp; sourceTree = "<group>"; };
 		4161409919C155DC00545F37 /* GameResultWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameResultWin.h; path = ../Classes/GameResultWin.h; sourceTree = "<group>"; };
+		4172DFE319C6F908000CD30C /* ShareVars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShareVars.cpp; path = ../Classes/ShareVars.cpp; sourceTree = "<group>"; };
+		4172DFE419C6F909000CD30C /* ShareVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareVars.h; path = ../Classes/ShareVars.h; sourceTree = "<group>"; };
 		4180102519BE9D4C0081EFE8 /* exit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = exit; sourceTree = "<group>"; };
 		4180102A19BEB0280081EFE8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		4180102D19C010A70081EFE8 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 				41F335E619C2DF72003649E5 /* Util.h */,
 				41E6C9FC19C2F2C900C2CFFC /* RankScene.cpp */,
 				41E6C9FD19C2F2C900C2CFFC /* RankScene.h */,
+				4172DFE319C6F908000CD30C /* ShareVars.cpp */,
+				4172DFE419C6F909000CD30C /* ShareVars.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -802,6 +808,7 @@
 				41F335E719C2DF72003649E5 /* Util.cpp in Sources */,
 				4161409A19C155DC00545F37 /* GameResultWin.cpp in Sources */,
 				41E7A2D119B5B539004EA538 /* VisibleRect.cpp in Sources */,
+				4172DFE519C6F909000CD30C /* ShareVars.cpp in Sources */,
 				418849FE19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A119B5AA9F004EA538 /* BaseScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
@@ -820,6 +827,7 @@
 				41884A0319B9A8C000F90CDF /* BaseSprite.cpp in Sources */,
 				418849FF19B9A86D00F90CDF /* PauseSprite.cpp in Sources */,
 				41E7A2A619B5AC19004EA538 /* HomeScene.cpp in Sources */,
+				4172DFE619C6F909000CD30C /* ShareVars.cpp in Sources */,
 				41E7A2D619B6B5C2004EA538 /* PopScene.cpp in Sources */,
 				41E6C9FF19C2F2C900C2CFFC /* RankScene.cpp in Sources */,
 				41E7A2DD19B6F0D8004EA538 /* Bird.cpp in Sources */,

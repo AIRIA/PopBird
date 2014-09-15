@@ -16,6 +16,8 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
+extern bool isShowExit;
+
 #define SPRITE(url) Sprite::createWithSpriteFrameName(url)
 
 #define BOX_WIDTH 62
@@ -25,6 +27,7 @@ using namespace CocosDenshion;
 
 #define EVENT_PAUSE_GAME "event_pause_game"
 #define EVENT_RESTART_GAME "event_restart_game"
+#define EVENT_SHOW_EXIT "event_show_exit"
 
 #define KEY_SOUND_ENABLE "sound_enable"
 #define KEY_VIBRATION_ENABLE "vibration_enable"

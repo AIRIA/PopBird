@@ -28,6 +28,19 @@ package com.giant.bird;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import com.giant.bird.jni.JniBrige;
+
+import android.view.KeyEvent;
+
 public class AppActivity extends Cocos2dxActivity {
+
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		if(KeyEvent.KEYCODE_BACK==keyCode)
+		{
+			JniBrige.getInstance().exitGame();
+		}
+		return super.onKeyUp(keyCode, event);
+	}
 	
 }

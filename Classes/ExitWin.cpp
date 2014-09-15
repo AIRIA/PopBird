@@ -90,5 +90,6 @@ void ExitWin::hide()
     cancleItem->runAction(Spawn::create(FadeOut::create(EXIT_ANIMATE_TIME),MoveBy::create(EXIT_ANIMATE_TIME, Point(MOVE_GAP,0)), nullptr));
     runAction(Sequence::create(DelayTime::create(EXIT_ANIMATE_TIME),CCCallFuncN::create([](Node *obj)->void{
         obj->removeFromParent();
+        isShowExit = false;
     }), nullptr));
 }
