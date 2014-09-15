@@ -89,21 +89,27 @@ void GameResultWin::__show()
     {
         char key[50];
         sprintf(key, "record_%d",i);
-        auto record = SharePreference->getIntegerForKey(key);
-        records.push_back(record);
-    }
-    
-    for (auto i=0; i<5; i++)
-    {
-        auto score = records.at(i);
-        if (m_iScore>score)
+        auto record = SharePreference->getIntegerForKey(key, -1);
+        if (record!=-1)
         {
-            records.insert(records.begin()+i,m_iScore);
+            records.push_back(record);
         }
     }
-    records.erase(records.end()-1);
     
-       
+    records.push_back(m_iScore);
     
+    std::sort(records.begin(), records.end(), [](const int &a,const int &b)->bool{
+        return a>b;
+    });
     
+    auto recordsNum = records.size();
+    auto lenght = recordsNum>5?5:recordsNum;
+    
+    for (auto i=0; i<lenght; i++)
+    {
+        char key[50];
+        sprintf(key, "record_%d",i);
+        SharePreference->setIntegerForKey(key, records.at(i));
+    }
+    SharePreference->flush();
 }

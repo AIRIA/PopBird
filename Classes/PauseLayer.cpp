@@ -7,6 +7,7 @@
 //
 
 #include "PauseLayer.h"
+#include "HomeScene.h"
 
 #define ANIMATE_TIME 0.3f
 
@@ -17,7 +18,7 @@ bool PauseLayer::init()
         return false;
     }
     
-    getEventDispatcher()->addCustomEventListener(EVENT_PAUSE_GAME, [this](EventCustom *)->void{
+    getEventDispatcher()->addCustomEventListener(EVENT_PAUSE_GAME, [&](EventCustom *)->void{
         this->show();
     });
     
@@ -27,6 +28,7 @@ bool PauseLayer::init()
 void PauseLayer::onExit()
 {
     getEventDispatcher()->removeEventListenersForTarget(this);
+    getEventDispatcher()->removeCustomEventListeners(EVENT_PAUSE_GAME);
     Layer::onExit();
 }
 
@@ -57,11 +59,16 @@ void PauseLayer::show()
     soundToogleItem->setCallback([](Ref *pSender)->void{
         auto toogleItem = static_cast<MenuItemToggle*>(pSender);
         auto idx = toogleItem->getSelectedIndex();
-        if (idx==0) {
+        if (idx==0)
+        {
             SharePreference->setBoolForKey(KEY_SOUND_ENABLE, true);
-            return;
         }
-        SharePreference->setBoolForKey(KEY_SOUND_ENABLE, false);
+        else
+        {
+            SharePreference->setBoolForKey(KEY_SOUND_ENABLE, false);
+        }
+        
+        SharePreference->flush();
     });
     
     auto pauseMenu = Menu::create(restartItem,resumeItem,saveItem,soundToogleItem,nullptr);
@@ -70,6 +77,10 @@ void PauseLayer::show()
     saveItem->setPosition(Point(380,80));
     soundToogleItem->setPosition(Point(65,230));
     pauseMenu->setPosition(Point::ZERO);
+    
+    saveItem->setCallback([](Ref *pSender)->void{
+        HomeScene::create()->run();
+    });
     
     resumeItem->setCallback([&](Ref *pSender)->void{
         this->hide();
@@ -100,3 +111,4 @@ void PauseLayer::hide()
     wrapperNode->runAction(Sequence::create(moveTo,CCCallFunc::create(CC_CALLBACK_0(Node::removeFromParent, wrapperNode)), nullptr));
     bgLayer->runAction(Sequence::create(fadeOut,CCCallFunc::create(CC_CALLBACK_0(Node::removeFromParent, bgLayer)), nullptr));
 }
+

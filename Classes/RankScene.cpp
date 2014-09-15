@@ -35,7 +35,12 @@ bool RankScene::init()
     menu->setPosition(Point::ZERO);
     addChild(menu);
     
-    for (auto i=0; i<5; i++) {
+    for (auto i=0; i<5; i++)
+    {
+        char key[50];
+        sprintf(key, "record_%d",i);
+        auto score = SharePreference->getIntegerForKey(key,-1);
+        
         auto record = SPRITE("score_board_bar@2x.png");
         record->setPosition(Point(m_winSize.width/2,750-i*125));
         auto label = Label::createWithTTF(__String::createWithFormat("%d",i+1)->getCString(),"fonts/SAF.otf", 34);
@@ -43,6 +48,14 @@ bool RankScene::init()
         label->setPosition(Point(30,10));
         record->addChild(label);
         addChild(record);
+        if (score>0)
+        {
+            auto scoreLabel = Label::createWithTTF(__String::createWithFormat("%d",score)->getCString(),"fonts/SAF.otf", 50);
+            scoreLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            scoreLabel->setPosition(Point(120,50));
+            record->addChild(scoreLabel);
+        }
+        
     }
     
     return true;

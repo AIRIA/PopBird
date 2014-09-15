@@ -151,11 +151,13 @@ void HomeScene::__addMainMenu()
     });
     
     menu2->setCallback([](Ref *pSender)->void{
-        ExitWin::create();
+        MessageBox("敬请期待", "提示");
+//        ExitWin::create();
     });
     
     menu3->setCallback([](Ref *pSender)->void{
-        GameResultWin::create(1,"12:32", 234, 6700);
+        MessageBox("敬请期待", "提示");
+//        GameResultWin::create(1,"12:32", 234, 6700);
     });
     
     

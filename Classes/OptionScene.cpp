@@ -36,12 +36,14 @@ bool OptionScene::init()
         auto item = static_cast<MenuItemToggle*>(pSender);
         auto res = item->getSelectedIndex()==0?true:false;
         SharePreference->setBoolForKey(KEY_SOUND_ENABLE, res);
+        SharePreference->flush();
     });
     
     vibrateItem->setCallback([](Ref *pSender)->void{
         auto item = static_cast<MenuItemToggle*>(pSender);
         auto res = item->getSelectedIndex()==0?true:false;
         SharePreference->setBoolForKey(KEY_VIBRATION_ENABLE, res);
+        SharePreference->flush();
     });
     
     

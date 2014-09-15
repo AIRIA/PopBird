@@ -58,7 +58,7 @@ void PopScene::__initBackground()
     targetScoreText->setPosition(VisibleRect::rightTop()-Point(80,33));
     addChild(targetScoreText);
     
-    targetScoreLabel = Label::createWithSystemFont("1000", "Arial", 26);
+    targetScoreLabel = Label::createWithSystemFont(__String::createWithFormat("%d",targetScore)->getCString(), "Arial", 26);
     targetScoreLabel->setPosition(targetScoreText->getPosition()-Point(0,33));
     addChild(targetScoreLabel);
     
@@ -74,7 +74,7 @@ void PopScene::__initBirds()
     isTest = false;
     birdWrapperNode = Node::create();
     for (auto i=0; i<ROW*COL; i++) {
-        auto bird = Bird::create(rand()%2);
+        auto bird = Bird::create(rand()%5);
         auto row = i/COL;
         auto col = i%COL;
         bird->setAnchorPoint(Point::ZERO);
@@ -328,18 +328,22 @@ void PopScene::_updateBirdsPosition()
             
             if(row>0)
             {
-                delay = delay+0.4f;
+                delay = delay+0.2f;
             }
             auto delayTime = delay;
             if(row==0)
             {
-                delayTime = delay+0.4;
+                delayTime = delay+0.2f;
             }
             bird->runAction(Sequence::create(DelayTime::create(delayTime),CallFuncN::create([&](Node *node)->void{
                 auto bird = static_cast<Bird*>(node);
                 bird->bomb();
                 auto label = static_cast<Label*>(this->getChildByTag(kTagRewardWrapper)->getChildByTag(kTagRewardLabel));
                 reward -= 50;
+                if(reward<0)
+                {
+                    reward = 0;
+                }
                 char rewardStr[50];
                 sprintf(rewardStr,"奖励:%d",reward);
                 label->setString(rewardStr);
