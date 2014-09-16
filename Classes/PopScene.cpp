@@ -521,6 +521,7 @@ void PopScene::onExit()
 {
     BaseScene::onExit();
     getEventDispatcher()->removeEventListenersForTarget(this);
+    getEventDispatcher()->removeCustomEventListeners(EVENT_RESTART_GAME);
 }
 
 void PopScene::__gameStart()

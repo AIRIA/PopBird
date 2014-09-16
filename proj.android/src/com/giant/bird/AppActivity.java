@@ -29,10 +29,18 @@ package com.giant.bird;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.giant.bird.jni.JniBrige;
+import com.umeng.update.UmengUpdateAgent;
 
+import android.os.Bundle;
 import android.view.KeyEvent;
 
 public class AppActivity extends Cocos2dxActivity {
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		 UmengUpdateAgent.silentUpdate(this);
+		super.onCreate(savedInstanceState);
+	}
 
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {

@@ -10,11 +10,13 @@
 #define __PopBird__Util__
 
 #include "Headers.h"
+#if (CC_PLATFORM_ANDROID==CC_TARGET_PLATFORM)
 
 #include <jni.h>
 #include "platform/android/jni/JniHelper.h"
 #include <android/log.h>
 
+#endif
 enum Method
 {
 	kMethodShowBannerAd,

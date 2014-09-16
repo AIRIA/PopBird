@@ -93,6 +93,8 @@ void Util::invokeNativeMethod(Method method, std::string param)
 
 }
 
+#if (CC_PLATFORM_ANDROID==CC_TARGET_PLATFORM)
+
 extern "C"
 {
 	JNIEXPORT void JNICALL Java_com_giant_bird_jni_JniBrige_exitGame(JNIEnv *env,jobject thiz)
@@ -100,3 +102,5 @@ extern "C"
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(EVENT_SHOW_EXIT);
 	}
 }
+
+#endif
