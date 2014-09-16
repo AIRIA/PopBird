@@ -23,32 +23,53 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-****************************************************************************/
+ ****************************************************************************/
 package com.giant.bird;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import com.giant.bird.jni.JniBrige;
-import com.umeng.update.UmengUpdateAgent;
-
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+import com.giant.bird.jni.JniBrige;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.message.PushAgent;
+import com.umeng.update.UmengUpdateAgent;
+
 public class AppActivity extends Cocos2dxActivity {
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		 UmengUpdateAgent.silentUpdate(this);
+		UmengUpdateAgent.silentUpdate(this);
+		MobclickAgent.updateOnlineConfig( this );
+		PushAgent mPushAgent = PushAgent.getInstance(this);
+		mPushAgent.enable();
+		mPushAgent.onAppStart();
+		FeedbackAgent agent = new FeedbackAgent(this);
+	    agent.startFeedbackActivity();
+	    agent.sync();
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
-		if(KeyEvent.KEYCODE_BACK==keyCode)
-		{
+		if (KeyEvent.KEYCODE_BACK == keyCode) {
 			JniBrige.getInstance().exitGame();
 		}
 		return super.onKeyUp(keyCode, event);
 	}
-	
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
 }
