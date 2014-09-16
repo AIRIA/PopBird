@@ -66,6 +66,7 @@ void HomeScene::onEnter()
         isShowExit = true;
         this->scheduleOnce(schedule_selector(HomeScene::__showExit), 0.1f);
     });
+    Util::invokeNativeMethod(kMethodShowSpotAd);
 }
 
 void HomeScene::__showExit(float delta)

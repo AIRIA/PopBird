@@ -80,6 +80,9 @@ void Util::invokeNativeMethod(Method method, std::string param)
 	case kMethodHideSpotAd:
 		methodName = "hideSpotAd";
 		break;
+    case kMethodShowFeedBack:
+        methodName = "showFeedBack";
+        break;
 	default:
 		MessageBox("调用的方法没找到","ERROR");
 		break;

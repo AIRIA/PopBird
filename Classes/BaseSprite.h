@@ -14,7 +14,7 @@
 class BaseSprite:public Sprite
 {
 public:
-    
+    static BaseSprite *create(std::string fileName);
     void setTouchEndedHandler(std::function<void(BaseSprite*)> handler);
     void setTouchMovedHandler(std::function<void(BaseSprite*)> handler);
     void setTouchBeganHandler(std::function<void(BaseSprite*)> handler);

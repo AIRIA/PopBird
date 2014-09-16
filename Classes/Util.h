@@ -22,7 +22,8 @@ enum Method
 	kMethodShowBannerAd,
 	kMethodShowSpotAd,
 	kMethodHideBannerAd,
-	kMethodHideSpotAd
+	kMethodHideSpotAd,
+    kMethodShowFeedBack
 };
 
 class Util

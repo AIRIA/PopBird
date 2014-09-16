@@ -8,6 +8,7 @@
 
 #include "PauseLayer.h"
 #include "HomeScene.h"
+#include "BaseSprite.h"
 
 #define ANIMATE_TIME 0.3f
 
@@ -56,6 +57,8 @@ void PauseLayer::show()
     
     auto soundToogleItem = MenuItemToggle::createWithCallback([](Ref *pSender)->void{}, MenuItemSprite::create(SPRITE("paused_sound_on.png"), SPRITE("paused_sound_on.png")),MenuItemSprite::create(SPRITE("paused_sound_off.png"), SPRITE("paused_sound_off.png")),nullptr);
     
+
+    
     soundToogleItem->setCallback([](Ref *pSender)->void{
         auto toogleItem = static_cast<MenuItemToggle*>(pSender);
         auto idx = toogleItem->getSelectedIndex();
@@ -91,9 +94,16 @@ void PauseLayer::show()
         getEventDispatcher()->dispatchCustomEvent(EVENT_RESTART_GAME);
     });
     
+    auto help = BaseSprite::create("game_asset/stage_dimm2_RETINA.png");
+    help->setTouchEndedHandler([](BaseSprite*)->void{
+        Util::invokeNativeMethod(kMethodShowFeedBack);
+    });
+    help->setPosition(Point(70,100));
+    help->setOpacity(0);
+    
     wrapperNode->addChild(menuBg);
     wrapperNode->addChild(pauseMenu);
-    
+    wrapperNode->addChild(help);
     addChild(wrapperNode);
     wrapperNode->setPositionY(-463);
     wrapperNode->runAction(MoveTo::create(ANIMATE_TIME, Point::ZERO));

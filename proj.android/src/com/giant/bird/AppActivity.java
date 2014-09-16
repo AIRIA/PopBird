@@ -26,14 +26,18 @@ THE SOFTWARE.
  ****************************************************************************/
 package com.giant.bird;
 
+import net.youmi.android.AdManager;
+import net.youmi.android.spot.SpotDialogListener;
+import net.youmi.android.spot.SpotManager;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 
 import com.giant.bird.jni.JniBrige;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.fb.FeedbackAgent;
 import com.umeng.message.PushAgent;
 import com.umeng.update.UmengUpdateAgent;
 
@@ -42,13 +46,15 @@ public class AppActivity extends Cocos2dxActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		UmengUpdateAgent.silentUpdate(this);
-		MobclickAgent.updateOnlineConfig( this );
+		MobclickAgent.updateOnlineConfig(this);
 		PushAgent mPushAgent = PushAgent.getInstance(this);
 		mPushAgent.enable();
 		mPushAgent.onAppStart();
-		FeedbackAgent agent = new FeedbackAgent(this);
-	    agent.startFeedbackActivity();
-	    agent.sync();
+		
+		JniBrige.getInstance().init(this);
+		AdManager.getInstance(this).init("330725f16188979b", "5b4ceb56ea751654", false);
+		SpotManager.getInstance(this).loadSpotAds();
+//		SpotManager.getInstance(this).checkSDKProcess("330725f16188979b", "5b4ceb56ea751654");
 		super.onCreate(savedInstanceState);
 	}
 
@@ -61,6 +67,20 @@ public class AppActivity extends Cocos2dxActivity {
 	}
 
 	@Override
+	public void onBackPressed() {
+		if (!SpotManager.getInstance(this).disMiss(true)) {
+			super.onBackPressed();
+		}
+	}
+
+	@Override
+	protected void onStop() {
+		// 如果不调用此方法，则按home键的时候会出现图标无法显示的情况。
+		SpotManager.getInstance(this).disMiss(false);
+		super.onStop();
+	}
+
+	@Override
 	public void onResume() {
 		super.onResume();
 		MobclickAgent.onResume(this);
@@ -70,6 +90,12 @@ public class AppActivity extends Cocos2dxActivity {
 	public void onPause() {
 		super.onPause();
 		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onDestroy() {
+		SpotManager.getInstance(this).unregisterSceenReceiver();
+		super.onDestroy();
 	}
 
 }

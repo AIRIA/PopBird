@@ -8,6 +8,18 @@
 
 #include "BaseSprite.h"
 
+BaseSprite *BaseSprite::create(std::string fileName)
+{
+    auto sprite = new BaseSprite();
+    if (sprite&&sprite->initWithFile(fileName)) {
+        sprite->autorelease();
+        sprite->__initEventListener();
+        return sprite;
+    }
+    CC_SAFE_DELETE(sprite);
+    return nullptr;
+}
+
 void BaseSprite::__initEventListener()
 {
     auto eventListener = EventListenerTouchOneByOne::create();
