@@ -20,7 +20,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview->setFrameSize(480, 720);
     }
     glview->setDesignResolutionSize(640, 960, ResolutionPolicy::EXACT_FIT);
-    director->setDisplayStats(true);
     director->setAnimationInterval(1.0 / 60);
     HomeScene::create()->run();
     srand(time(nullptr));

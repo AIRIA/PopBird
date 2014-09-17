@@ -33,9 +33,12 @@ public class JniBrige {
 
 	public void init(Context context) {
 		this.context = (Activity) context;
-		String adsSetting = NetManager.sendHttpRequest("https://gist.githubusercontent.com/AIRIA/8543e81354f0ade1e49a/raw");
-		Log.v("github",adsSetting);
 		try {
+			String adsSetting = NetManager.sendHttpRequest("https://gist.githubusercontent.com/AIRIA/8543e81354f0ade1e49a/raw");
+			if(adsSetting == null)
+			{
+				return;
+			}
 			JSONObject setting = new JSONObject(adsSetting);
 			boolean showAds = setting.getBoolean("v1.3");
 			if(showAds){
