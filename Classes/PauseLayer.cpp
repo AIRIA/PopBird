@@ -8,6 +8,7 @@
 
 #include "PauseLayer.h"
 #include "HomeScene.h"
+#include "Util.h"
 
 #define ANIMATE_TIME 0.3f
 
@@ -21,7 +22,7 @@ bool PauseLayer::init()
     getEventDispatcher()->addCustomEventListener(EVENT_PAUSE_GAME, [&](EventCustom *)->void{
         this->show();
     });
-    
+    Util::invokeNativeMethod(kMethodShowSpotAd);
     return true;
 }
 
