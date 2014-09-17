@@ -51,8 +51,6 @@ public class AppActivity extends Cocos2dxActivity {
 		
 		JniBrige.getInstance().init(this);
 		AdManager.getInstance(this).init("330725f16188979b", "5b4ceb56ea751654", false);
-		SpotManager.getInstance(this).loadSpotAds();
-//		SpotManager.getInstance(this).checkSDKProcess("330725f16188979b", "5b4ceb56ea751654");
 		super.onCreate(savedInstanceState);
 	}
 
