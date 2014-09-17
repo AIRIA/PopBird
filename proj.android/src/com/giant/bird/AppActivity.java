@@ -27,13 +27,11 @@ THE SOFTWARE.
 package com.giant.bird;
 
 import net.youmi.android.AdManager;
-import net.youmi.android.spot.SpotDialogListener;
 import net.youmi.android.spot.SpotManager;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 
 import com.giant.bird.jni.JniBrige;
