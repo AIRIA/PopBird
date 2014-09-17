@@ -112,4 +112,5 @@ void GameResultWin::__show()
         SharePreference->setIntegerForKey(key, records.at(i));
     }
     SharePreference->flush();
+    Util::invokeNativeMethod(kMethodShowSpotAd);
 }
