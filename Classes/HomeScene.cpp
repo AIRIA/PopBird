@@ -60,7 +60,7 @@ void HomeScene::onEnter()
     getEventDispatcher()->addCustomEventListener(EVENT_SHOW_EXIT, [&](EventCustom *custom)->void{
         if (isShowExit==true)
         {
-            exitWin->hide();
+            this->scheduleOnce(schedule_selector(HomeScene::__hideExit), 0.1f);
             return;
         }
         isShowExit = true;
@@ -72,6 +72,11 @@ void HomeScene::onEnter()
 void HomeScene::__showExit(float delta)
 {
     exitWin = ExitWin::create();
+}
+
+void HomeScene::__hideExit(float delta)
+{
+    exitWin->hide();
 }
 
 void HomeScene::onExit()

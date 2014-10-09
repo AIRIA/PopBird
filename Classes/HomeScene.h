@@ -28,6 +28,7 @@ private:
     void __addMainMenu();
     void __addColorBirds();
     void __showExit(float delta);
+    void __hideExit(float delta);
 };
 
 #endif /* defined(__PopBird__HomeScene__) */

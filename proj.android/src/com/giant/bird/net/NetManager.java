@@ -13,12 +13,15 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 public class NetManager {
 	
 	public static String sendHttpRequest(String server){
 		HttpClient client = new DefaultHttpClient();
+		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
+		client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 3000);
 		HttpGet request = new HttpGet(server);
 		String result = null;
 		try {

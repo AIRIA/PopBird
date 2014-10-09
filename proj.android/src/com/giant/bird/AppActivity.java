@@ -26,11 +26,10 @@ THE SOFTWARE.
  ****************************************************************************/
 package com.giant.bird;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.spot.SpotManager;
-
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import y.u.w.Ywaf;
+import y.u.w.st.Ywbv;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -48,9 +47,10 @@ public class AppActivity extends Cocos2dxActivity {
 		PushAgent mPushAgent = PushAgent.getInstance(this);
 		mPushAgent.enable();
 		mPushAgent.onAppStart();
-		
+
 		JniBrige.getInstance().init(this);
-		AdManager.getInstance(this).init("330725f16188979b", "5b4ceb56ea751654", false);
+		Ywaf.getInstance(this).init("330725f16188979b", "5b4ceb56ea751654",
+				false);
 		super.onCreate(savedInstanceState);
 	}
 
@@ -64,16 +64,15 @@ public class AppActivity extends Cocos2dxActivity {
 
 	@Override
 	public void onBackPressed() {
-		if (!SpotManager.getInstance(this).disMiss(true)) {
-			super.onBackPressed();
-		}
+	    if (!Ywbv.uax(this).uah(true)) {
+	        super.onBackPressed();
+	    }
 	}
 
 	@Override
 	protected void onStop() {
-		// 如果不调用此方法，则按home键的时候会出现图标无法显示的情况。
-		SpotManager.getInstance(this).disMiss(false);
-		super.onStop();
+	    Ywbv.uax(this).uah(false);
+	    super.onStop();
 	}
 
 	@Override
@@ -90,7 +89,7 @@ public class AppActivity extends Cocos2dxActivity {
 
 	@Override
 	protected void onDestroy() {
-		SpotManager.getInstance(this).unregisterSceenReceiver();
+		Ywbv.uax(this).uct();
 		super.onDestroy();
 	}
 

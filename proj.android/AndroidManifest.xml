@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.giant.bird"
     android:installLocation="auto"
-    android:versionCode="3"
-    android:versionName="1.3" >
+    android:versionCode="6"
+    android:versionName="1.6" >
 
     <uses-sdk android:minSdkVersion="9" />
 
@@ -113,29 +113,28 @@
         <!-- V1.3.0添加的service，负责下载通知的资源 -->
         <service android:name="com.umeng.message.UmengDownloadResourceService" />
 
-        <!-- 有米广告 -->
         <activity
-            android:name="net.youmi.android.AdBrowser"
+            android:name="y.u.w.Ywaa"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
 
         <service
-            android:name="net.youmi.android.AdService"
+            android:name="y.u.w.Ywai"
             android:exported="false" >
         </service>
 
-        <receiver android:name="net.youmi.android.AdReceiver" >
+        <receiver android:name="y.u.w.Ywah" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
 
         <provider
-            android:name="net.youmi.android.spot.SpotAdContentProvider"
-            android:authorities="com.youandroidmi" />
-
+            android:name="y.u.w.st.Ywbt"
+            android:authorities="com.fuck.anzhi" />
     </application>
 
     <supports-screens
